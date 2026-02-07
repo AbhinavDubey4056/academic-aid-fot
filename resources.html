@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Resources - Academic Aid</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- GLOBAL THEME --- */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to bottom, #f8f9ff 0%, #e8ecff 100%);
+            color: #1a1a2e;
+            min-height: 100vh;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2563eb !important;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .navbar-nav .nav-link {
+            color: #64748b !important;
+            margin: 0 0.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active { color: #2563eb !important; }
+
+        /* --- MAIN SECTION STYLES --- */
+        .main-container {
+            padding: 40px 0 60px;
+        }
+
+        /* QR Upload Card (New Style) */
+        .upload-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-bottom: 50px;
+            border: 1px solid #e2e8f0;
+            animation: fadeInDown 0.6s ease;
+            text-align: center; 
+        }
+
+        .upload-card h2 {
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 15px;
+        }
+
+        .qr-box {
+            background: #f8fafc;
+            border: 2px dashed #cbd5e1;
+            border-radius: 15px;
+            padding: 20px;
+            display: inline-block;
+            margin: 20px 0;
+            transition: transform 0.3s ease;
+        }
+        
+        .qr-box:hover {
+            transform: scale(1.02);
+            border-color: #2563eb;
+        }
+
+        .qr-image {
+            max-width: 200px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .instruction-text {
+            color: #64748b;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .highlight-text {
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        /* --- SEARCH BAR CSS --- */
+        .search-container {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px 20px 15px 50px;
+            border-radius: 50px;
+            border: 1px solid #e2e8f0;
+            background: #fff;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.15);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            font-size: 1.1rem;
+        }
+
+        /* Resource Grid */
+        .resource-card {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+        }
+
+        .card-preview {
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f1f5f9;
+            color: #64748b;
+            font-size: 4rem;
+            position: relative;
+        }
+
+        .card-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .res-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 5px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .res-meta {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .card-actions {
+            margin-top: auto;
+            display: flex;
+            justify-content: center; 
+            align-items: center;
+        }
+
+        .btn-view {
+            background: #eff6ff;
+            color: #2563eb;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            width: 100%;
+            text-decoration: none;
+            text-align: center;
+            transition: background 0.2s;
+        }
+        .btn-view:hover { background: #dbeafe; color: #1d4ed8; }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <div class="logo-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                Academic Aid
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">Resources</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contactus.html">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="main-container">
+        <div class="container">
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="upload-card">
+                        <h2><i class="fas fa-cloud-upload-alt text-primary me-2"></i>Contribute to the Community</h2>
+                        
+                        <p class="instruction-text">
+                            We are building the largest library of student resources. 
+                            <br>Scan the QR code below to fill out the form and submit your notes.
+                        </p>
+
+                        <div class="qr-box">
+                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSecWZg2pwTmGds6Ntu2UMJyx1ypJworFBN7N7UUQWsOCwr1jA/viewform?usp=dialog" target="_blank">
+                                <img src="form.png" alt="Scan to Upload" class="qr-image">
+                            </a>
+                        </div>
+                        
+                        <p class="text-muted small">
+                            Submitted resources will be reviewed and <span class="highlight-text">updated shortly</span> on this page.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-12 text-center">
+                    <div class="search-container">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" id="searchInput" class="search-input" placeholder="Search notes, cheat sheets, papers...">
+                    </div>
+                </div>
+                <div class="col-12 d-flex justify-content-between align-items-center">
+                    <h3 class="fw-bold text-secondary"><i class="fas fa-layer-group me-2"></i>Community Uploads</h3>
+                    <div class="text-muted small">Updated Manually</div>
+                </div>
+            </div>
+
+            <div id="resourcesGrid" class="row g-4">
+                <div class="col-12 text-center py-5">
+                    <div class="spinner-border text-primary" role="status"></div>
+                    <p class="mt-2 text-muted">Loading resources...</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+        import { getFirestore, collection, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+        // Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBt_WGLEjiOBCcDNUc69ztTeRxSo0TqgF8",
+            authDomain: "academic-aid-storage-data.firebaseapp.com",
+            projectId: "academic-aid-storage-data",
+            storageBucket: "academic-aid-storage-data.firebasestorage.app",
+            messagingSenderId: "732899496794",
+            appId: "1:732899496794:web:a0ed30b4ac0731cba35963"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Global variable to store all fetched resources for searching
+        let allResources = [];
+
+        // --- FETCH AND DISPLAY RESOURCES ---
+        const grid = document.getElementById('resourcesGrid');
+        const searchInput = document.getElementById('searchInput');
+
+        // Query resources ordered by votes (descending)
+        const q = query(collection(db, "shared_resources"), orderBy("votes", "desc"));
+
+        onSnapshot(q, (snapshot) => {
+            allResources = []; // Reset array on update
+            
+            if (snapshot.empty) {
+                grid.innerHTML = `<div class="col-12 text-center text-muted py-5"><h4>No resources yet. Check back soon! 🚀</h4></div>`;
+                return;
+            }
+
+            // Store data in local array
+            snapshot.forEach((docSnap) => {
+                allResources.push({
+                    id: docSnap.id,
+                    ...docSnap.data()
+                });
+            });
+
+            // Initial Render
+            renderResources(allResources);
+        });
+
+        // --- SEARCH FUNCTIONALITY ---
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase().trim();
+            
+            if (!searchTerm) {
+                renderResources(allResources);
+                return;
+            }
+
+            const filtered = allResources.filter(res => {
+                const title = (res.title || "").toLowerCase();
+                const fileName = (res.fileName || "").toLowerCase();
+                return title.includes(searchTerm) || fileName.includes(searchTerm);
+            });
+
+            renderResources(filtered);
+        });
+
+        // --- RENDER FUNCTION ---
+        function renderResources(dataArray) {
+            grid.innerHTML = "";
+
+            if (dataArray.length === 0) {
+                grid.innerHTML = `
+                <div class="col-12 text-center text-muted py-5">
+                    <i class="fas fa-search fa-3x mb-3 text-secondary" style="opacity: 0.3"></i>
+                    <h4>No matches found</h4>
+                    <p>Try searching for a different keyword.</p>
+                </div>`;
+                return;
+            }
+
+            dataArray.forEach((data) => {
+                // Determine icon/preview based on type
+                let previewHtml;
+                if (data.fileType && data.fileType.startsWith('image/')) {
+                    previewHtml = `<img src="${data.fileUrl}" alt="Preview" loading="lazy">`;
+                } else {
+                    previewHtml = `<i class="fas fa-file-pdf text-danger"></i>`;
+                }
+
+                const dateStr = data.timestamp ? new Date(data.timestamp.seconds * 1000).toLocaleDateString() : 'Recent';
+
+                const cardHtml = `
+                <div class="col-md-6 col-lg-4 col-xl-3 animate-card">
+                    <div class="resource-card">
+                        <div class="card-preview">
+                            ${previewHtml}
+                        </div>
+                        <div class="card-body">
+                            <div class="res-title" title="${data.title}">${data.title}</div>
+                            <div class="res-meta">
+                                <span>${data.fileName ? data.fileName.substring(0, 15) + '...' : 'File'}</span>
+                                <span>${dateStr}</span>
+                            </div>
+                            <div class="card-actions">
+                                <a href="${data.fileUrl}" target="_blank" class="btn-view">
+                                    <i class="fas fa-eye me-1"></i> View Resource
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+                
+                grid.innerHTML += cardHtml;
+            });
+        }
+    </script>
+</body>
+</html>

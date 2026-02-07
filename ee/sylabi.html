@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syllabus - Electrical Engineering</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to bottom, #f8f9ff 0%, #e8ecff 100%);
+            color: #1a1a2e;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2563eb !important;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .navbar-nav .nav-link {
+            color: #64748b !important;
+            margin: 0 0.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #2563eb !important;
+            transform: translateY(-2px);
+        }
+
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: #2563eb;
+            transition: width 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover::after {
+            width: 80%;
+        }
+
+        /* Main Content Layout */
+        .courses-container {
+            display: flex;
+            min-height: calc(100vh - 80px);
+            padding: 40px 0;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            padding: 20px;
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        .year-btn {
+            width: 100%;
+            padding: 18px 25px;
+            margin-bottom: 15px;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            
+            /* Default State (Inactive) */
+            background: #ffffff;
+            border: 2px solid #cbd5e1;
+            color: #64748b;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .year-btn:hover {
+            transform: translateX(5px);
+            background: #f1f5f9;
+            border-color: #94a3b8;
+            color: #334155;
+        }
+
+        .year-btn.active {
+            /* Active State */
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3);
+        }
+
+        /* Content Area */
+        .content-area {
+            flex: 1;
+            padding: 20px 40px;
+        }
+
+        .course-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .course-header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: #1e293b;
+            position: relative;
+            display: inline-block;
+            text-transform: uppercase;
+        }
+
+        /* Underline effect */
+        .course-header h1::after {
+            content: '';
+            display: block;
+            width: 60%;
+            height: 5px;
+            background: linear-gradient(90deg, #3b82f6, #2563eb);
+            margin: 10px auto 0;
+            border-radius: 5px;
+        }
+
+        .syllabus-content {
+            max-width: 900px;
+            margin: 0 auto;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .syllabus-content.active {
+            display: block;
+        }
+
+        .syllabus-item {
+            /* Card Style */
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            text-align: center;
+        }
+
+        .syllabus-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 5px;
+            background: linear-gradient(180deg, #3b82f6, #2563eb);
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+        }
+
+        .syllabus-item:hover {
+            transform: translateY(-5px);
+            border-color: #3b82f6;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+        }
+        
+        .syllabus-item:hover::before {
+            opacity: 1;
+        }
+
+        .click-here-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #2563eb;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .click-here-link:hover {
+            color: #1d4ed8;
+            transform: scale(1.02);
+        }
+
+        .click-here-link i {
+            font-size: 1.4rem;
+        }
+
+        @media (max-width: 968px) {
+            .courses-container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                position: relative;
+                top: 0;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                margin-bottom: 30px;
+            }
+
+            .year-btn {
+                flex: 1;
+                min-width: 150px;
+                margin-bottom: 0;
+            }
+
+            .content-area {
+                padding: 20px;
+            }
+
+            .course-header h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <div class="logo-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                Academic Aid
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/privacy.html">Privacy Policy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/terms.html">Terms & Conditions</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid courses-container">
+        <div class="sidebar">
+            <button class="year-btn active" onclick="changeYear(1)">1st Year</button>
+            <button class="year-btn" onclick="changeYear(2)">2nd Year</button>
+            <button class="year-btn" onclick="changeYear(3)">3rd Year</button>
+            <button class="year-btn" onclick="changeYear(4)">4th Year</button>
+        </div>
+
+        <div class="content-area">
+            <div class="course-header">
+                <h1>SYLLABUS - ELECTRICAL ENGINEERING</h1>
+            </div>
+
+            <div class="syllabus-content active" id="year1">
+                <div class="syllabus-item">
+                    <a href="https://drive.google.com/file/d/1xIvmkfvM-HZzdMs5B4zpko5hM4b5brgE/view" class="click-here-link">
+                        <i class="fas fa-hand-point-right"></i>
+                        Click here for 1st Year Syllabus
+                    </a>
+                </div>
+            </div>
+
+            <div class="syllabus-content" id="year2">
+                <div class="syllabus-item">
+                    <a href="https://drive.google.com/file/d/1uJL6NzPeHLTWWF-ncysb1YPYEPqZ9UPD/view" class="click-here-link">
+                        <i class="fas fa-hand-point-right"></i>
+                        Click here for 2nd Year Syllabus
+                    </a>
+                </div>
+            </div>
+
+            <div class="syllabus-content" id="year3">
+                <div class="syllabus-item">
+                    <a href="https://drive.google.com/file/d/1roRxvtHZbOrFvUb0cQPYWzjsv-MXbNjS/view" class="click-here-link">
+                        <i class="fas fa-hand-point-right"></i>
+                        Click here for 3rd Year Syllabus
+                    </a>
+                </div>
+            </div>
+
+            <div class="syllabus-content" id="year4">
+                <div class="syllabus-item">
+                    <a href="#" class="click-here-link">
+                        <i class="fas fa-hand-point-right"></i>
+                        Click here for 4th Year Syllabus
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function changeYear(year) {
+            // Update active button
+            document.querySelectorAll('.year-btn').forEach((btn, index) => {
+                btn.classList.remove('active');
+                if (index + 1 === year) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Update content
+            document.querySelectorAll('.syllabus-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(`year${year}`).classList.add('active');
+        }
+    </script>
+</body>
+</html>

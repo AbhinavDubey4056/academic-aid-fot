@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Academic Aid</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Color Scheme picked from index.html */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* Updated to index.html background */
+            background: linear-gradient(to bottom, #f8f9ff 0%, #e8ecff 100%);
+            color: #1a1a2e;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Navbar - matched to index.html */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2563eb !important;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .navbar-nav .nav-link {
+            color: #64748b !important;
+            margin: 0 0.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active {
+            color: #2563eb !important;
+        }
+
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: #2563eb;
+            transition: width 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover::after, .navbar-nav .nav-link.active::after {
+            width: 80%;
+        }
+
+        /* Hero Section */
+        .about-hero {
+            padding: 100px 0 60px;
+            text-align: center;
+        }
+
+        .about-hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            /* Updated to index blue gradient */
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .about-hero p {
+            font-size: 1.4rem;
+            color: #64748b;
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        /* Mission Section */
+        .mission-section {
+            padding: 60px 0;
+        }
+
+        .mission-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 25px;
+            padding: 50px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .mission-card h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: #1e293b;
+        }
+
+        .mission-card h2 i {
+            color: #3b82f6;
+        }
+
+        .mission-card p {
+            font-size: 1.15rem;
+            line-height: 2;
+            color: #64748b;
+            margin-bottom: 20px;
+        }
+
+        /* Features Grid */
+        .features-section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 60px;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .feature-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.4s ease;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #3b82f6, #2563eb);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            border-color: #3b82f6;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #fff;
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #1e293b;
+        }
+
+        .feature-card p {
+            color: #64748b;
+            line-height: 1.7;
+        }
+
+        /* Values Section */
+        .values-section {
+            padding: 60px 0;
+        }
+
+        .value-box {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 30px;
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .value-box:hover {
+            transform: translateX(10px);
+            border-color: #3b82f6;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .value-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #fff;
+            flex-shrink: 0;
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+        }
+
+        .value-content h4 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #1e293b;
+        }
+
+        .value-content p {
+            color: #64748b;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* Founder Section */
+        .founder-section {
+            padding: 60px 0 100px;
+        }
+
+        .founder-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 25px;
+            padding: 50px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .founder-image {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 25px;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: #fff;
+            box-shadow: 0 15px 40px rgba(37, 99, 235, 0.3);
+        }
+
+        .founder-card h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .founder-card .position {
+            font-size: 1.2rem;
+            color: #64748b;
+            margin-bottom: 25px;
+        }
+
+        .founder-card p {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: #64748b;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .about-hero h1 { font-size: 2.5rem; }
+            .section-title { font-size: 2rem; }
+            .mission-card, .founder-card { padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <div class="logo-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                Academic Aid
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contactus.html">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="privacy.html">Privacy Policy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="terms.html">Terms & Conditions</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="about-hero">
+        <div class="container">
+            <h1>About Academic Aid</h1>
+            <p>Empowering students through accessible, authentic, and comprehensive study resources</p>
+        </div>
+    </section>
+
+    <section class="mission-section">
+        <div class="container">
+            <div class="mission-card">
+                <h2><i class="fas fa-hands-helping me-3"></i>Our Mission</h2>
+                <p>Welcome to Academic Aid, a thriving student community dedicated to empowering our peers in their academic journey. We recognize that student life presents unique challenges, particularly when it comes to assignments, exam preparation, and accessing quality study materials. That's why we've built a comprehensive platform where students can freely access authentic notes, previous year questions (PYQs), marking schemes, syllabus documents, lab files, and a wealth of other essential study resources.</p>
+                
+                <p>Our community comprises passionate individuals united by a common belief: knowledge should be universally accessible. We take pride in our commitment to helping countless students achieve their academic aspirations by providing them with the tools they need to succeed. Our dedicated team works tirelessly to update our resource library, ensuring that students always have access to current, relevant information and are thoroughly prepared for their examinations.</p>
+                
+                <p>At Academic Aid, we champion the power of collaboration and knowledge sharing. We actively encourage our members to engage with one another, contribute their insights, and share their experiences. Our support team is always available to provide guidance and assistance whenever you need it, fostering an environment where every question is valued and every student is supported.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="container">
+            <h2 class="section-title">What We Offer</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <h3>Authentic Notes</h3>
+                        <p>Comprehensive, well-organized notes curated by top-performing students and verified for accuracy</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <h3>Previous Year Papers</h3>
+                        <p>Extensive collection of PYQs with solutions to help you understand exam patterns and prepare effectively</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h3>Marking Schemes</h3>
+                        <p>Detailed marking schemes to help you understand evaluation criteria and improve your answers</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                        <h3>Complete Syllabus</h3>
+                        <p>Updated syllabus documents for all courses to help you plan your studies systematically</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-flask"></i>
+                        </div>
+                        <h3>Lab Files & Reports</h3>
+                        <p>Ready-to-use lab files, practical reports, and experiment documentation for your reference</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Community Support</h3>
+                        <p>Active peer-to-peer support system where students help each other succeed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="values-section">
+        <div class="container">
+            <h2 class="section-title">Our Core Values</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="value-box">
+                        <div class="value-icon">
+                            <i class="fas fa-unlock"></i>
+                        </div>
+                        <div class="value-content">
+                            <h4>Accessibility for All</h4>
+                            <p>We believe education is a fundamental right. All our resources are completely free, ensuring that financial constraints never hinder academic success.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="value-box">
+                        <div class="value-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="value-content">
+                            <h4>Quality & Authenticity</h4>
+                            <p>Every resource on our platform is carefully verified and validated to ensure you receive accurate, reliable study materials.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="value-box">
+                        <div class="value-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <div class="value-content">
+                            <h4>Continuous Improvement</h4>
+                            <p>We constantly update our resources and incorporate feedback to provide the most current and relevant study materials.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="value-box">
+                        <div class="value-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <div class="value-content">
+                            <h4>Collaborative Learning</h4>
+                            <p>We foster a culture where students learn from each other, share knowledge, and grow together as a community.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="founder-section">
+        <div class="container">
+            <div class="founder-card">
+                <div class="founder-image">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+                <h3>Aryan Verma</h3>
+                <p class="position">Founder & Community Lead</p>
+                <p>"Thank you for choosing Academic Aid as your learning partner. We are committed to providing you with the best possible learning experience and creating an environment that fosters growth, collaboration, and success. Together, we can achieve excellence and make your academic journey truly remarkable. We look forward to supporting you every step of the way."</p>
+                <p style="margin-top: 25px; font-style: normal; font-weight: 600; color: #1e293b;">Best Wishes,<br>The Academic Aid Team</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
