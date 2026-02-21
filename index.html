@@ -93,8 +93,74 @@
 
         /* Hero Section - UPDATED FOR TRANSPARENCY */
         .hero-section {
-            padding: 100px 0 80px; /* Increased top padding for better spacing */
+            padding: 100px 0 80px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Doodle Elements */
+        .doodle {
+            position: absolute;
+            opacity: 0.45;
+            pointer-events: none;
+            user-select: none;
+            filter: drop-shadow(0 2px 6px rgba(37, 99, 235, 0.15));
+        }
+
+        .doodle svg {
+            fill: none;
+            stroke: #2563eb;
+            stroke-width: 2.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* Color variants */
+        .doodle.purple svg { stroke: #7c3aed; }
+        .doodle.pink   svg { stroke: #db2777; }
+        .doodle.teal   svg { stroke: #0891b2; }
+        .doodle.green  svg { stroke: #16a34a; }
+        .doodle.orange svg { stroke: #ea580c; }
+
+        /* Individual doodle positions & sizes */
+        .doodle-1  { top: 5%;  left: 2%;   width: 72px;  animation: float1 6s   ease-in-out infinite; }
+        .doodle-2  { top: 12%; left: 86%;  width: 65px;  animation: float2 7s   ease-in-out infinite; }
+        .doodle-3  { top: 50%; left: 3%;   width: 68px;  animation: float3 5s   ease-in-out infinite; }
+        .doodle-4  { top: 62%; left: 89%;  width: 78px;  animation: float1 8s   ease-in-out infinite reverse; }
+        .doodle-5  { top: 28%; left: 91%;  width: 60px;  animation: float2 6.5s ease-in-out infinite; }
+        .doodle-6  { top: 72%; left: 8%;   width: 64px;  animation: float3 7.5s ease-in-out infinite; }
+        .doodle-7  { top: 4%;  left: 68%;  width: 70px;  animation: float1 5.5s ease-in-out infinite; }
+        .doodle-8  { top: 78%; left: 73%;  width: 58px;  animation: float2 9s   ease-in-out infinite; }
+        .doodle-9  { top: 38%; left: 1%;   width: 62px;  animation: float3 6s   ease-in-out infinite reverse; }
+        .doodle-10 { top: 18%; left: 13%;  width: 55px;  animation: float2 8s   ease-in-out infinite; }
+        .doodle-11 { top: 82%; left: 38%;  width: 68px;  animation: float1 7s   ease-in-out infinite; }
+        .doodle-12 { top: 8%;  left: 43%;  width: 56px;  animation: float3 6.5s ease-in-out infinite reverse; }
+        /* New doodles */
+        .doodle-13 { top: 45%; left: 94%;  width: 60px;  animation: float1 5.8s ease-in-out infinite; }
+        .doodle-14 { top: 88%; left: 18%;  width: 65px;  animation: float2 7.2s ease-in-out infinite reverse; }
+        .doodle-15 { top: 22%; left: 78%;  width: 70px;  animation: float3 6.3s ease-in-out infinite; }
+        .doodle-16 { top: 60%; left: 50%;  width: 55px;  animation: float1 8.5s ease-in-out infinite; }
+        .doodle-17 { top: 2%;  left: 30%;  width: 62px;  animation: float2 5.2s ease-in-out infinite reverse; }
+        .doodle-18 { top: 70%; left: 60%;  width: 72px;  animation: float3 7.8s ease-in-out infinite; }
+        .doodle-19 { top: 35%; left: 20%;  width: 58px;  animation: float1 6.8s ease-in-out infinite; }
+        .doodle-20 { top: 90%; left: 55%;  width: 65px;  animation: float2 6.1s ease-in-out infinite reverse; }
+
+        @keyframes float1 {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33%       { transform: translateY(-16px) rotate(9deg); }
+            66%       { transform: translateY(8px) rotate(-6deg); }
+        }
+
+        @keyframes float2 {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50%       { transform: translateY(-20px) rotate(-12deg); }
+        }
+
+        @keyframes float3 {
+            0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+            40%       { transform: translateY(-12px) rotate(14deg) scale(1.12); }
+            80%       { transform: translateY(6px) rotate(-7deg) scale(0.94); }
         }
 
         .hero-box {
@@ -497,6 +563,182 @@
     </nav>
 
     <section class="hero-section">
+
+        <!-- ✏️ Floating Doodles -->
+        <!-- 1: Pencil -->
+        <div class="doodle doodle-1 blue">
+          <svg viewBox="0 0 60 60" width="60" height="60">
+            <rect x="10" y="8" width="12" height="36" rx="3"/>
+            <polygon points="10,44 22,44 16,56"/>
+            <line x1="10" y1="14" x2="22" y2="14"/>
+          </svg>
+        </div>
+        <!-- 2: Star -->
+        <div class="doodle doodle-2 orange">
+          <svg viewBox="0 0 50 50" width="50" height="50">
+            <polygon points="25,5 30,18 44,18 33,27 37,41 25,32 13,41 17,27 6,18 20,18"/>
+          </svg>
+        </div>
+        <!-- 3: Open Book -->
+        <div class="doodle doodle-3 teal">
+          <svg viewBox="0 0 60 50" width="60" height="50">
+            <path d="M30 10 C20 8 8 10 5 12 L5 42 C8 40 20 38 30 40 C40 38 52 40 55 42 L55 12 C52 10 40 8 30 10Z"/>
+            <line x1="30" y1="10" x2="30" y2="40"/>
+            <line x1="12" y1="18" x2="28" y2="18"/>
+            <line x1="12" y1="24" x2="28" y2="24"/>
+            <line x1="32" y1="18" x2="48" y2="18"/>
+            <line x1="32" y1="24" x2="48" y2="24"/>
+          </svg>
+        </div>
+        <!-- 4: Lightbulb -->
+        <div class="doodle doodle-4 orange">
+          <svg viewBox="0 0 60 70" width="60" height="70">
+            <path d="M30 10 C18 10 10 18 10 28 C10 36 16 42 20 46 L20 52 L40 52 L40 46 C44 42 50 36 50 28 C50 18 42 10 30 10Z"/>
+            <line x1="22" y1="56" x2="38" y2="56"/>
+            <line x1="24" y1="61" x2="36" y2="61"/>
+            <line x1="30" y1="5"  x2="30" y2="2"/>
+            <line x1="10" y1="15" x2="8"  y2="13"/>
+            <line x1="50" y1="15" x2="52" y2="13"/>
+          </svg>
+        </div>
+        <!-- 5: Graduation Cap -->
+        <div class="doodle doodle-5 purple">
+          <svg viewBox="0 0 55 50" width="55" height="50">
+            <polygon points="27,8 50,20 27,32 4,20"/>
+            <path d="M13 25 L13 38 C13 38 20 44 27 44 C34 44 41 38 41 38 L41 25"/>
+            <line x1="50" y1="20" x2="50" y2="34"/>
+            <circle cx="50" cy="36" r="2.5" fill="#7c3aed"/>
+          </svg>
+        </div>
+        <!-- 6: Calculator -->
+        <div class="doodle doodle-6 green">
+          <svg viewBox="0 0 50 60" width="50" height="60">
+            <rect x="6" y="4" width="38" height="52" rx="6"/>
+            <rect x="12" y="10" width="26" height="12" rx="3"/>
+            <circle cx="16" cy="34" r="3"/><circle cx="25" cy="34" r="3"/><circle cx="34" cy="34" r="3"/>
+            <circle cx="16" cy="44" r="3"/><circle cx="25" cy="44" r="3"/><circle cx="34" cy="44" r="3"/>
+          </svg>
+        </div>
+        <!-- 7: Checkmark in circle -->
+        <div class="doodle doodle-7 green">
+          <svg viewBox="0 0 55 55" width="55" height="55">
+            <circle cx="27" cy="27" r="22"/>
+            <polyline points="15,27 23,35 39,19"/>
+          </svg>
+        </div>
+        <!-- 8: Atom -->
+        <div class="doodle doodle-8 teal">
+          <svg viewBox="0 0 55 55" width="55" height="55">
+            <circle cx="27" cy="27" r="4"/>
+            <ellipse cx="27" cy="27" rx="22" ry="9"/>
+            <ellipse cx="27" cy="27" rx="22" ry="9" transform="rotate(60 27 27)"/>
+            <ellipse cx="27" cy="27" rx="22" ry="9" transform="rotate(120 27 27)"/>
+          </svg>
+        </div>
+        <!-- 9: Ruler -->
+        <div class="doodle doodle-9 pink">
+          <svg viewBox="0 0 60 30" width="60" height="30">
+            <rect x="4" y="6" width="52" height="18" rx="3"/>
+            <line x1="12" y1="6"  x2="12" y2="14"/>
+            <line x1="20" y1="6"  x2="20" y2="18"/>
+            <line x1="28" y1="6"  x2="28" y2="14"/>
+            <line x1="36" y1="6"  x2="36" y2="18"/>
+            <line x1="44" y1="6"  x2="44" y2="14"/>
+          </svg>
+        </div>
+        <!-- 10: Speech bubble (question) -->
+        <div class="doodle doodle-10 purple">
+          <svg viewBox="0 0 50 50" width="50" height="50">
+            <path d="M5 5 Q5 2 8 2 L42 2 Q45 2 45 5 L45 32 Q45 35 42 35 L18 35 L8 45 L8 35 Q5 35 5 32 Z"/>
+            <text x="17" y="24" font-size="18" fill="#7c3aed" stroke="none" font-family="serif" font-weight="bold">?</text>
+          </svg>
+        </div>
+        <!-- 11: Infinity / loop -->
+        <div class="doodle doodle-11 pink">
+          <svg viewBox="0 0 70 35" width="70" height="35">
+            <path d="M35 17 C28 5 8 5 8 17 C8 29 28 29 35 17 C42 5 62 5 62 17 C62 29 42 29 35 17Z"/>
+          </svg>
+        </div>
+        <!-- 12: Clock -->
+        <div class="doodle doodle-12 teal">
+          <svg viewBox="0 0 50 50" width="50" height="50">
+            <circle cx="25" cy="25" r="20"/>
+            <line x1="25" y1="25" x2="25" y2="10"/>
+            <line x1="25" y1="25" x2="35" y2="30"/>
+            <circle cx="25" cy="25" r="2" fill="#0891b2"/>
+          </svg>
+        </div>
+        <!-- 13: DNA Helix / Zigzag wave -->
+        <div class="doodle doodle-13 orange">
+          <svg viewBox="0 0 60 60" width="60" height="60">
+            <path d="M10 10 C20 15 40 15 50 10"/>
+            <path d="M10 20 C20 25 40 25 50 20"/>
+            <path d="M10 30 C20 35 40 35 50 30"/>
+            <path d="M10 40 C20 45 40 45 50 40"/>
+            <path d="M10 50 C20 55 40 55 50 50"/>
+            <line x1="30" y1="10" x2="30" y2="50"/>
+          </svg>
+        </div>
+        <!-- 14: Trophy -->
+        <div class="doodle doodle-14 orange">
+          <svg viewBox="0 0 60 65" width="60" height="65">
+            <path d="M15 8 L45 8 L45 30 C45 42 35 48 30 48 C25 48 15 42 15 30 Z"/>
+            <path d="M15 14 C10 14 6 18 6 24 C6 30 10 34 15 34"/>
+            <path d="M45 14 C50 14 54 18 54 24 C54 30 50 34 45 34"/>
+            <line x1="30" y1="48" x2="30" y2="56"/>
+            <line x1="18" y1="56" x2="42" y2="56"/>
+          </svg>
+        </div>
+        <!-- 15: Magnifying glass -->
+        <div class="doodle doodle-15 blue">
+          <svg viewBox="0 0 60 60" width="60" height="60">
+            <circle cx="24" cy="24" r="16"/>
+            <line x1="36" y1="36" x2="52" y2="52"/>
+          </svg>
+        </div>
+        <!-- 16: Music note (brain break!) -->
+        <div class="doodle doodle-16 pink">
+          <svg viewBox="0 0 50 60" width="50" height="60">
+            <path d="M20 40 C20 44 14 48 14 48 C14 48 8 44 8 40 C8 36 11 33 14 33 C17 33 20 36 20 40Z"/>
+            <line x1="20" y1="40" x2="20" y2="10"/>
+            <line x1="20" y1="10" x2="38" y2="6"/>
+            <line x1="38" y1="6"  x2="38" y2="36"/>
+            <path d="M38 36 C38 40 32 44 32 44 C32 44 26 40 26 36 C26 32 29 29 32 29 C35 29 38 32 38 36Z"/>
+          </svg>
+        </div>
+        <!-- 17: Paper airplane -->
+        <div class="doodle doodle-17 teal">
+          <svg viewBox="0 0 65 50" width="65" height="50">
+            <polygon points="5,25 60,5 45,45"/>
+            <line x1="5" y1="25" x2="40" y2="30"/>
+            <line x1="40" y1="30" x2="45" y2="45"/>
+          </svg>
+        </div>
+        <!-- 18: Flask / beaker -->
+        <div class="doodle doodle-18 purple">
+          <svg viewBox="0 0 50 65" width="50" height="65">
+            <path d="M18 8 L18 28 L6 52 C6 56 10 60 25 60 C40 60 44 56 44 52 L32 28 L32 8Z"/>
+            <line x1="14" y1="8" x2="36" y2="8"/>
+            <line x1="8" y1="44" x2="42" y2="44"/>
+            <circle cx="20" cy="50" r="3" fill="#7c3aed" stroke="none"/>
+            <circle cx="30" cy="52" r="2" fill="#7c3aed" stroke="none"/>
+          </svg>
+        </div>
+        <!-- 19: Heart -->
+        <div class="doodle doodle-19 pink">
+          <svg viewBox="0 0 55 50" width="55" height="50">
+            <path d="M27 44 C27 44 5 30 5 17 C5 10 10 5 17 5 C22 5 27 9 27 9 C27 9 32 5 37 5 C44 5 49 10 49 17 C49 30 27 44 27 44Z"/>
+          </svg>
+        </div>
+        <!-- 20: Pi symbol -->
+        <div class="doodle doodle-20 green">
+          <svg viewBox="0 0 55 55" width="55" height="55">
+            <line x1="8" y1="15" x2="47" y2="15"/>
+            <path d="M18 15 C18 15 18 35 16 48"/>
+            <path d="M37 15 C37 15 37 30 40 48"/>
+          </svg>
+        </div>
+
         <div class="container">
             <div class="hero-box">
                 <h1>Master Your</h1>
