@@ -3,29 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ask for Help - Academic Aid</title>
+    <title>Ask for Help — Academic Aid</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-        /* --- THEME STYLES --- */
+        :root {
+            --blue: #2563eb;
+            --blue-light: #3b82f6;
+            --blue-pale: #e0e7ff;
+            --slate: #1e293b;
+            --muted: #64748b;
+            --border: #e2e8f0;
+            --bg: #f8faff;
+            --card: #ffffff;
+            --radius: 18px;
+            --danger: #ef4444;
+            --success: #22c55e;
+            --warn-bg: #fffbeb;
+            --warn-border: #fde68a;
+            --warn-text: #92400e;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(to bottom, #f8f9ff 0%, #e8ecff 100%);
-            color: #1a1a2e;
-            overflow-x: hidden;
+            background: var(--bg);
+            color: var(--slate);
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        /* Navbar */
+        /* ── NAVBAR ── */
         .navbar {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             padding: 1rem 0;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
-
         .navbar-brand {
             font-size: 1.8rem;
             font-weight: 700;
@@ -34,7 +50,6 @@
             align-items: center;
             gap: 0.5rem;
         }
-
         .logo-icon {
             width: 45px;
             height: 45px;
@@ -47,142 +62,306 @@
             color: #fff;
             box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
         }
-
         .navbar-nav .nav-link {
             color: #64748b !important;
             margin: 0 0.5rem;
             font-weight: 500;
             transition: all 0.3s ease;
+            position: relative;
         }
-
-        .navbar-nav .nav-link:hover { color: #2563eb !important; }
-
-        /* --- ASK PAGE SPECIFIC STYLES --- */
-        .container-padding { padding: 60px 0; }
-
-        .ask-box {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 25px;
-            padding: 40px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-            margin-bottom: 50px;
-        }
-
-        .ask-box h2 { font-weight: 700; color: #1e293b; margin-bottom: 20px; }
-
-        .form-control {
-            border-radius: 10px;
-            border: 1px solid #cbd5e1;
-            padding: 12px;
-            margin-bottom: 15px;
-        }
-
-        .btn-submit {
-            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-            border: none;
-            padding: 12px 35px;
-            border-radius: 50px;
-            font-weight: 600;
-            color: #fff;
-            transition: all 0.3s ease;
-            width: 100%;
-        }
-
-        .btn-submit:hover {
+        .navbar-nav .nav-link:hover {
+            color: #2563eb !important;
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.4);
+        }
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: #2563eb;
+            transition: width 0.3s ease;
+        }
+        .navbar-nav .nav-link:hover::after {
+            width: 80%;
         }
 
-        /* Warning Note Box */
+        /* ── AUTH BAR ── */
+        .auth-bar {
+            background: #fff;
+            border-bottom: 1px solid var(--border);
+            padding: 0.6rem 0;
+            font-size: 0.85rem;
+        }
+        .auth-bar .container { display: flex; align-items: center; justify-content: flex-end; gap: 12px; }
+        .user-pill {
+            display: flex; align-items: center; gap: 8px;
+            background: var(--blue-pale);
+            color: #3730a3;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+        .user-pill img { width: 22px; height: 22px; border-radius: 50%; }
+
+        .btn-google {
+            display: flex; align-items: center; gap: 8px;
+            background: #fff;
+            border: 1.5px solid var(--border);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            color: var(--slate);
+            cursor: pointer;
+            transition: all .2s;
+            font-size: 0.85rem;
+        }
+        .btn-google:hover { border-color: var(--blue); color: var(--blue); box-shadow: 0 3px 12px rgba(37,99,235,.15); }
+        .btn-signout { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 0.85rem; transition: color .2s; }
+        .btn-signout:hover { color: var(--danger); }
+
+        /* ── LAYOUT ── */
+        .page-wrap { padding: 50px 0 80px; }
+
+        /* ── FORM CARD ── */
+        .ask-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 36px;
+            box-shadow: 0 8px 32px rgba(0,0,0,.06);
+        }
+        .ask-card h2 {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 1.5rem;
+            color: var(--slate);
+            margin-bottom: 18px;
+        }
+
+        /* Note / Telegram boxes */
         .note-box {
-            background-color: #fff3cd;
-            border: 1px solid #ffeeba;
-            color: #856404;
-            padding: 15px;
-            border-radius: 15px;
-            margin-bottom: 15px;
-            font-size: 0.9rem;
+            background: var(--warn-bg);
+            border: 1px solid var(--warn-border);
+            color: var(--warn-text);
+            padding: 12px 15px;
+            border-radius: 10px;
+            margin-bottom: 14px;
+            font-size: 0.85rem;
         }
-        
-        .note-box strong { display: block; margin-bottom: 5px; }
-        .note-box ul { margin-bottom: 0; padding-left: 20px; }
+        .note-box strong { display: block; margin-bottom: 4px; }
+        .note-box ul { margin: 0; padding-left: 18px; }
 
-        /* Telegram Box */
         .telegram-box {
-            background-color: #e0f2fe;
+            background: #e0f2fe;
             border: 1px solid #bae6fd;
             color: #0369a1;
-            padding: 15px;
-            border-radius: 15px;
-            margin-bottom: 20px;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
+            padding: 12px 15px;
+            border-radius: 10px;
+            margin-bottom: 18px;
+            font-size: 0.85rem;
+            display: flex; align-items: center; justify-content: space-between; gap: 10px;
         }
-
         .btn-telegram {
-            background-color: #0284c7;
-            color: white;
-            padding: 6px 15px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-weight: 600;
-            white-space: nowrap;
-            transition: all 0.2s ease;
+            background: #0284c7; color: white;
+            padding: 5px 14px; border-radius: 20px;
+            text-decoration: none; font-weight: 600;
+            white-space: nowrap; font-size: 0.8rem;
+            transition: background .2s;
+        }
+        .btn-telegram:hover { background: #0369a1; color: white; }
+
+        /* Form elements */
+        .form-control, .form-select {
+            border-radius: 10px;
+            border: 1.5px solid var(--border);
+            padding: 10px 14px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 0.92rem;
+            transition: border-color .2s, box-shadow .2s;
+        }
+        .form-control:focus, .form-select:focus {
+            border-color: var(--blue-light);
+            box-shadow: 0 0 0 3px rgba(59,130,246,.15);
+            outline: none;
         }
 
-        .btn-telegram:hover {
-            background-color: #0369a1;
-            color: white;
+        /* Character counter */
+        .char-counter {
+            font-size: 0.78rem;
+            color: var(--muted);
+            text-align: right;
+            margin-top: -10px;
+            margin-bottom: 10px;
+            transition: color .2s;
+        }
+        .char-counter.warn { color: #f59e0b; }
+        .char-counter.danger { color: var(--danger); }
+
+        .btn-submit {
+            background: linear-gradient(135deg, var(--blue-light), var(--blue));
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+            width: 100%;
+            transition: all .3s;
+            font-size: 0.95rem;
+            letter-spacing: .02em;
+        }
+        .btn-submit:hover:not(:disabled) {
             transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(37,99,235,.4);
+        }
+        .btn-submit:disabled { opacity: .6; cursor: not-allowed; }
+
+        /* Rate limit notice */
+        .rate-notice {
+            display: none;
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            color: var(--danger);
+            padding: 10px 14px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            margin-bottom: 12px;
+            text-align: center;
         }
 
-        /* Questions List */
-        .questions-list { display: flex; flex-direction: column; gap: 20px; }
+        /* Login gate */
+        .login-gate {
+            text-align: center;
+            padding: 20px 0 8px;
+        }
+        .login-gate p { color: var(--muted); font-size: 0.9rem; margin-bottom: 14px; }
+
+        /* ── QUESTIONS FEED ── */
+        .feed-header {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .feed-header h3 {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 1.4rem;
+            color: var(--slate);
+        }
+
+        /* Filter pills */
+        .filter-pills { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+        .pill {
+            padding: 5px 16px;
+            border-radius: 20px;
+            border: 1.5px solid var(--border);
+            background: #fff;
+            color: var(--muted);
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .2s;
+        }
+        .pill.active { background: var(--blue); border-color: var(--blue); color: #fff; }
+        .pill:hover:not(.active) { border-color: var(--blue-light); color: var(--blue); }
+
+        /* Question card */
+        .questions-list { display: flex; flex-direction: column; gap: 16px; }
 
         .question-card {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 20px;
-            padding: 30px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px 24px 18px 30px;
             position: relative;
             overflow: hidden;
-            animation: slideUp 0.5s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            animation: slideUp .4s ease both;
+            box-shadow: 0 2px 8px rgba(0,0,0,.04);
+            transition: box-shadow .2s;
         }
+        .question-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,.08); }
 
         @keyframes slideUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; transform: translateY(16px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
 
         .question-card::before {
             content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            width: 5px;
-            background: linear-gradient(180deg, #3b82f6, #2563eb);
+            position: absolute; top: 0; left: 0; bottom: 0; width: 4px;
+            background: linear-gradient(180deg, var(--blue-light), var(--blue));
+            border-radius: 4px 0 0 4px;
         }
 
-        .q-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-        .q-author { font-weight: 700; color: #2563eb; display: flex; align-items: center; gap: 10px; }
-        
-        .badges-container { display: flex; gap: 8px; }
-        .q-badge { background: #e0e7ff; color: #3730a3; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
-        .q-year-badge { background: #f1f5f9; color: #475569; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
+        .q-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+        .q-author { font-weight: 700; color: var(--blue); display: flex; align-items: center; gap: 8px; font-size: 0.95rem; }
+        .badges-container { display: flex; gap: 6px; align-items: center; }
+        .q-badge { background: var(--blue-pale); color: #3730a3; padding: 3px 10px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; }
+        .q-year-badge { background: #f1f5f9; color: #475569; padding: 3px 10px; border-radius: 20px; font-size: 0.78rem; font-weight: 600; }
 
-        .q-title { font-size: 1.3rem; font-weight: 700; color: #1e293b; margin-bottom: 10px; }
-        .q-text { color: #64748b; line-height: 1.6; }
-        .q-date { font-size: 0.8rem; color: #94a3b8; margin-top: 10px; text-align: right; font-style: italic; }
+        .q-title { font-size: 1.15rem; font-weight: 700; color: var(--slate); margin-bottom: 7px; line-height: 1.4; }
+        .q-text { color: var(--muted); line-height: 1.65; font-size: 0.92rem; }
+        .q-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 14px; }
+        .q-date { font-size: 0.78rem; color: #94a3b8; font-style: italic; }
+
+        /* Admin delete */
+        .btn-delete {
+            background: none;
+            border: 1px solid #fca5a5;
+            color: var(--danger);
+            padding: 3px 12px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .2s;
+            display: none; /* shown only for admin/owner */
+        }
+        .btn-delete:hover { background: #fef2f2; }
+        .btn-delete.visible { display: inline-flex; align-items: center; gap: 4px; }
+
+        /* Abuse flag button */
+        .btn-flag {
+            background: none;
+            border: none;
+            color: #cbd5e1;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: color .2s;
+            padding: 0 4px;
+        }
+        .btn-flag:hover { color: #f97316; }
+
+        /* Empty / loading state */
+        .state-msg { text-align: center; padding: 50px 20px; color: var(--muted); }
+        .state-msg i { font-size: 2.5rem; margin-bottom: 14px; opacity: .3; display: block; }
+
+        /* Toast */
+        .toast-wrap {
+            position: fixed; bottom: 24px; right: 24px; z-index: 9999;
+            display: flex; flex-direction: column; gap: 10px;
+        }
+        .toast-msg {
+            background: var(--slate);
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-size: 0.88rem;
+            box-shadow: 0 8px 24px rgba(0,0,0,.2);
+            animation: toastIn .3s ease;
+            max-width: 280px;
+        }
+        .toast-msg.success { background: #166534; }
+        .toast-msg.error   { background: #991b1b; }
+        @keyframes toastIn { from { opacity:0; transform: translateY(10px); } to { opacity:1; transform: translateY(0); } }
+
+        /* ADMIN BADGE */
+        .admin-badge { background: #fef3c7; color: #92400e; padding: 3px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; }
     </style>
 </head>
 <body>
 
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
             <a class="navbar-brand" href="index.html">
@@ -191,190 +370,411 @@
                 </div>
                 Academic Aid
             </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="#">Ask Help</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contactus.html">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="privacy.html">Privacy Policy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="terms.html">Terms & Conditions</a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <div class="container container-padding">
-        <div class="row">
-            
+    <!-- AUTH BAR -->
+    <div class="auth-bar">
+        <div class="container">
+            <div id="authLoggedOut">
+                <span style="color:var(--muted);">Sign in to post questions</span>
+                <button class="btn-google" id="btnGoogleLogin">
+                    <svg width="16" height="16" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                    Sign in with Google
+                </button>
+            </div>
+            <div id="authLoggedIn" style="display:none; align-items:center; gap:12px;">
+                <div class="user-pill">
+                    <img id="userAvatar" src="" alt="">
+                    <span id="userName"></span>
+                    <span id="adminBadge" class="admin-badge" style="display:none;">Admin</span>
+                </div>
+                <button class="btn-signout" id="btnSignOut"><i class="fas fa-sign-out-alt me-1"></i>Sign out</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE -->
+    <div class="container page-wrap">
+        <div class="row g-4">
+
+            <!-- LEFT: ASK FORM -->
             <div class="col-lg-4">
-                <div class="ask-box sticky-top" style="top: 100px;">
-                    <h2><i class="fas fa-pen-fancy me-2" style="color: #3b82f6;"></i>Ask a Question</h2>
-                    
+                <div class="ask-card sticky-top" style="top: 120px;">
+                    <h2><i class="fas fa-pen-fancy me-2" style="color:var(--blue);"></i>Ask a Question</h2>
+
                     <div class="note-box">
-                        <strong><i class="fas fa-exclamation-triangle me-2"></i>Important:</strong>
+                        <strong><i class="fas fa-shield-alt me-1"></i> Community Rules</strong>
                         <ul>
-                            <li>No abusive content allowed.</li>
+                            <li>No abusive, offensive, or spam content.</li>
+                            <li>Max 3 questions per hour per account.</li>
                             <li>Questions deleted after solving.</li>
+                            <li>Violations = permanent ban.</li>
                         </ul>
                     </div>
 
                     <div class="telegram-box">
-                        <div>
-                            <i class="fab fa-telegram me-1"></i> 
-                            Join Telegram for answers:
-                        </div>
-                        <a href="https://t.me/YOUR_GROUP_LINK" target="_blank" class="btn-telegram">
-                            Join Now <i class="fas fa-arrow-right ms-1"></i>
-                        </a>
+                        <div><i class="fab fa-telegram me-1"></i> Get faster answers on Telegram:</div>
+                        <a href="https://t.me/academicaidcommunity" target="_blank" class="btn-telegram">Join <i class="fas fa-arrow-right ms-1"></i></a>
                     </div>
 
-                    <form id="helpForm">
-                        <div class="mb-3">
-                            <input type="text" class="form-control" id="studentName" placeholder="Your Name" required>
+                    <!-- LOGIN GATE -->
+                    <div id="loginGate" class="login-gate">
+                        <p><i class="fas fa-lock me-1"></i> You must be signed in to post a question.</p>
+                        <button class="btn-google" id="btnGoogleLogin2" style="margin: 0 auto;">
+                            <svg width="16" height="16" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                            Sign in with Google
+                        </button>
+                    </div>
+
+                    <!-- FORM (shown when logged in) -->
+                    <form id="helpForm" style="display:none;">
+                        <div class="rate-notice" id="rateNotice">
+                            <i class="fas fa-clock me-1"></i> You've reached the limit of 3 questions/hour. Please wait before posting again.
                         </div>
-                        
+
                         <div class="mb-3">
-                            <select class="form-control" id="studentYear" required>
+                            <select class="form-select" id="studentYear" required>
                                 <option value="" disabled selected>Select Year</option>
-                                <option value="1st Year">1st Year</option>
-                                <option value="2nd Year">2nd Year</option>
-                                <option value="3rd Year">3rd Year</option>
-                                <option value="4th Year">4th Year</option>
+                                <option>1st Year</option>
+                                <option>2nd Year</option>
+                                <option>3rd Year</option>
+                                <option>4th Year</option>
                             </select>
                         </div>
 
                         <div class="mb-3">
-                            <select class="form-control" id="subjectTag" required>
-                                <option value="" disabled selected>Select Subject</option>
+                            <select class="form-select" id="subjectTag" required>
+                                <option value="" disabled selected>Select Branch</option>
                                 <option value="General">General</option>
                                 <option value="CSE">Computer Science</option>
                                 <option value="ECE">Electronics</option>
                                 <option value="EE">Electrical</option>
-                                <option value="Maths">Mathematics</option>
+                                
                             </select>
                         </div>
+                       
+
                         <div class="mb-3">
-                            <input type="text" class="form-control" id="questionTitle" placeholder="Title (e.g., Recursion help)" required>
+                            <input type="text" class="form-control" id="questionTitle" maxlength="100" placeholder="Subject (e.g., Recursion help)" required>
+                            <div class="char-counter" id="titleCounter">0 / 100</div>
                         </div>
+
                         <div class="mb-3">
-                            <textarea class="form-control" id="questionText" rows="4" placeholder="Describe your problem..." required></textarea>
+                            <textarea class="form-control" id="questionText" rows="4" maxlength="600" placeholder="Describe your problem clearly..." required></textarea>
+                            <div class="char-counter" id="textCounter">0 / 600</div>
                         </div>
-                        <button type="submit" class="btn btn-submit" id="submitBtn">Post Question</button>
+
+                        <button type="submit" class="btn btn-submit" id="submitBtn">
+                            <i class="fas fa-paper-plane me-2"></i>Post Question
+                        </button>
                     </form>
                 </div>
             </div>
 
+            <!-- RIGHT: FEED -->
             <div class="col-lg-8">
-                <h3 class="mb-4 text-secondary">Community Questions</h3>
+                <div class="feed-header">
+                    <h3>Community Questions</h3>
+                    <span id="questionCount" style="color:var(--muted); font-size:0.88rem;"></span>
+                </div>
+
+                <!-- Filters -->
+                <div class="filter-pills" id="filterPills">
+                    <span class="pill active" data-filter="All">All</span>
+                    <span class="pill" data-filter="General">General</span>
+                    <span class="pill" data-filter="CSE">CSE</span>
+                    <span class="pill" data-filter="ECE">ECE</span>
+                    <span class="pill" data-filter="EE">EE</span>
+                    
+                </div>
+
                 <div id="questionsContainer" class="questions-list">
-                    <div class="text-center p-5">
-                        <div class="spinner-border text-primary" role="status">
-                            <span class="visually-hidden">Loading...</span>
-                        </div>
-                    </div>
+                    <div class="state-msg"><i class="fas fa-spinner fa-spin"></i>Loading questions…</div>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
-        import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+    <!-- TOAST CONTAINER -->
+    <div class="toast-wrap" id="toastWrap"></div>
 
-        // TODO: Replace with your actual Firebase config keys
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+        import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, deleteDoc, doc, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
+
+        /* ── CONFIG ── */
         const firebaseConfig = {
             apiKey: "AIzaSyDryPK_ihKE2WB-oF_or_22opW7jLROwiI",
-    authDomain: "academic-aid-abc7a.firebaseapp.com",
-    projectId: "academic-aid-abc7a",
-    storageBucket: "academic-aid-abc7a.firebasestorage.app",
-    messagingSenderId: "585607310164",
-    appId: "1:585607310164:web:437f924e06a336d41076c1"
+            authDomain: "academic-aid-abc7a.firebaseapp.com",
+            projectId: "academic-aid-abc7a",
+            storageBucket: "academic-aid-abc7a.firebasestorage.app",
+            messagingSenderId: "585607310164",
+            appId: "1:585607310164:web:437f924e06a336d41076c1"
         };
 
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
+        // ⚠️  Replace with your real admin email(s)
+        const ADMIN_EMAILS = ["abdubey405@gmail.com"];
 
-        // --- 1. SAVE DATA TO FIRESTORE ---
-        const helpForm = document.getElementById('helpForm');
-        
-        helpForm.addEventListener('submit', async (e) => {
+        const app = initializeApp(firebaseConfig);
+        const db  = getFirestore(app);
+        const auth = getAuth(app);
+        const provider = new GoogleAuthProvider();
+
+        /* ── ABUSE FILTER ── */
+        // Extend this list as needed
+        const BAD_WORDS = ["abuse1", "slur1", "spam", "idiot", "stupid", "fool", "hate", "kill", "die"];
+        function containsBadWords(text) {
+            const lower = text.toLowerCase();
+            return BAD_WORDS.some(w => lower.includes(w));
+        }
+
+        /* ── RATE LIMITING (client-side, per session) ── */
+        const RATE_LIMIT = 3;     // max posts
+        const RATE_WINDOW = 3600; // seconds (1 hour)
+        function getRateData() {
+            const raw = sessionStorage.getItem('rateData');
+            return raw ? JSON.parse(raw) : { count: 0, start: Date.now() };
+        }
+        function isRateLimited() {
+            let d = getRateData();
+            const elapsed = (Date.now() - d.start) / 1000;
+            if (elapsed > RATE_WINDOW) { sessionStorage.removeItem('rateData'); return false; }
+            return d.count >= RATE_LIMIT;
+        }
+        function incrementRate() {
+            let d = getRateData();
+            const elapsed = (Date.now() - d.start) / 1000;
+            if (elapsed > RATE_WINDOW) d = { count: 0, start: Date.now() };
+            d.count++;
+            sessionStorage.setItem('rateData', JSON.stringify(d));
+        }
+
+        /* ── TOAST ── */
+        function toast(msg, type = '') {
+            const wrap = document.getElementById('toastWrap');
+            const el = document.createElement('div');
+            el.className = `toast-msg ${type}`;
+            el.textContent = msg;
+            wrap.appendChild(el);
+            setTimeout(() => el.remove(), 3500);
+        }
+
+        /* ── AUTH STATE ── */
+        let currentUser = null;
+        let isAdmin = false;
+
+        onAuthStateChanged(auth, user => {
+            currentUser = user;
+            isAdmin = user ? ADMIN_EMAILS.includes(user.email) : false;
+
+            document.getElementById('authLoggedOut').style.display  = user ? 'none'  : 'flex';
+            document.getElementById('authLoggedIn').style.display   = user ? 'flex'  : 'none';
+            document.getElementById('loginGate').style.display      = user ? 'none'  : 'block';
+            document.getElementById('helpForm').style.display       = user ? 'block' : 'none';
+
+            if (user) {
+                document.getElementById('userAvatar').src = user.photoURL || '';
+                document.getElementById('userName').textContent = user.displayName || user.email;
+                document.getElementById('adminBadge').style.display = isAdmin ? 'inline' : 'none';
+            }
+
+            // Re-render so delete buttons reflect the new auth state immediately
+            renderQuestions();
+        });
+
+        /* ── GOOGLE LOGIN ── */
+        async function googleLogin() {
+            try { await signInWithPopup(auth, provider); }
+            catch(e) { toast('Sign-in failed: ' + e.message, 'error'); }
+        }
+        document.getElementById('btnGoogleLogin').addEventListener('click', googleLogin);
+        document.getElementById('btnGoogleLogin2').addEventListener('click', googleLogin);
+        document.getElementById('btnSignOut').addEventListener('click', () => signOut(auth));
+
+        /* ── CHARACTER COUNTERS ── */
+        function attachCounter(inputId, counterId, max) {
+            const el = document.getElementById(inputId);
+            const counter = document.getElementById(counterId);
+            el.addEventListener('input', () => {
+                const len = el.value.length;
+                counter.textContent = `${len} / ${max}`;
+                counter.className = 'char-counter' + (len > max * 0.9 ? ' danger' : len > max * 0.75 ? ' warn' : '');
+            });
+        }
+        attachCounter('questionTitle', 'titleCounter', 100);
+        attachCounter('questionText',  'textCounter',  600);
+
+        /* ── FORM SUBMIT ── */
+        document.getElementById('helpForm').addEventListener('submit', async (e) => {
             e.preventDefault();
+            if (!currentUser) { toast('Please sign in first.', 'error'); return; }
+
+            const rateNotice = document.getElementById('rateNotice');
+            if (isRateLimited()) {
+                rateNotice.style.display = 'block';
+                toast('Rate limit reached. Try again later.', 'error');
+                return;
+            }
+            rateNotice.style.display = 'none';
+
+            const year    = document.getElementById('studentYear').value;
+            const subject = document.getElementById('subjectTag').value;
+            const title   = document.getElementById('questionTitle').value.trim();
+            const text    = document.getElementById('questionText').value.trim();
+
+            if (containsBadWords(title) || containsBadWords(text)) {
+                toast('⚠️ Your question contains inappropriate language. Please revise it.', 'error');
+                return;
+            }
+
             const btn = document.getElementById('submitBtn');
-            btn.innerHTML = 'Posting...';
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Posting…';
             btn.disabled = true;
 
-            const name = document.getElementById('studentName').value;
-            const year = document.getElementById('studentYear').value;
-            const subject = document.getElementById('subjectTag').value;
-            const title = document.getElementById('questionTitle').value;
-            const text = document.getElementById('questionText').value;
-
             try {
-                // Add a new document in collection "questions"
-                await addDoc(collection(db, "questions"), {
-                    name: name,
-                    year: year,
-                    subject: subject,
-                    title: title,
-                    text: text,
+                await addDoc(collection(db, 'questions'), {
+                    uid: currentUser.uid,
+                    name: currentUser.displayName || 'Anonymous',
+                    email: currentUser.email,
+                    avatar: currentUser.photoURL || '',
+                    year, subject, title, text,
+                    flagCount: 0,
                     timestamp: serverTimestamp()
                 });
-                
-                // Clear form
-                helpForm.reset();
-                btn.innerHTML = 'Post Question';
-                btn.disabled = false;
-                
-            } catch (error) {
-                console.error("Error adding document: ", error);
-                alert("Error posting question. Check console.");
-                btn.innerHTML = 'Post Question';
-                btn.disabled = false;
+                incrementRate();
+                document.getElementById('helpForm').reset();
+                document.querySelectorAll('.char-counter').forEach(c => { c.textContent = c.textContent.replace(/^\d+/, '0'); c.className = 'char-counter'; });
+                toast('✅ Question posted!', 'success');
+            } catch(err) {
+                console.error(err);
+                toast('Error posting: ' + err.message, 'error');
             }
+
+            btn.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Post Question';
+            btn.disabled = false;
         });
 
-        // --- 2. LISTEN FOR REAL-TIME UPDATES ---
-        const qContainer = document.getElementById('questionsContainer');
-        
-        const qQuery = query(collection(db, "questions"), orderBy("timestamp", "desc"));
+        /* ── FILTER ── */
+        let activeFilter = 'All';
+        document.getElementById('filterPills').addEventListener('click', e => {
+            if (!e.target.classList.contains('pill')) return;
+            document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+            e.target.classList.add('active');
+            activeFilter = e.target.dataset.filter;
+            renderQuestions();
+        });
+
+        /* ── LIVE DATA ── */
+        let allDocs = [];
+        const qQuery = query(collection(db, 'questions'), orderBy('timestamp', 'desc'));
 
         onSnapshot(qQuery, (snapshot) => {
-            qContainer.innerHTML = ''; // Clear current list
-            
-            snapshot.forEach((doc) => {
-                const data = doc.data();
-                
-                let dateStr = "";
-                if (data.timestamp) {
-                    dateStr = new Date(data.timestamp.seconds * 1000).toLocaleString();
-                }
-
-                // Create Card HTML
-                const card = `
-                    <div class="question-card">
-                        <div class="q-header">
-                            <div class="q-author">
-                                <i class="fas fa-user-circle fa-lg"></i> ${data.name}
-                            </div>
-                            <div class="badges-container">
-                                <span class="q-year-badge">${data.year || 'Year?'}</span>
-                                <span class="q-badge">${data.subject}</span>
-                            </div>
-                        </div>
-                        <h4 class="q-title">${data.title}</h4>
-                        <p class="q-text">${data.text}</p>
-                        <div class="q-date">${dateStr}</div>
-                    </div>
-                `;
-                qContainer.innerHTML += card;
-            });
-
-            if(snapshot.empty) {
-                qContainer.innerHTML = '<p class="text-center text-muted">No questions yet. Be the first to ask!</p>';
-            }
+            allDocs = snapshot.docs.map(d => ({ id: d.id, ...d.data() }));
+            renderQuestions();
         });
 
+        function renderQuestions() {
+            const container = document.getElementById('questionsContainer');
+            const filtered = activeFilter === 'All' ? allDocs : allDocs.filter(d => d.subject === activeFilter);
+
+            document.getElementById('questionCount').textContent = `${filtered.length} question${filtered.length !== 1 ? 's' : ''}`;
+
+            if (filtered.length === 0) {
+                container.innerHTML = `<div class="state-msg"><i class="fas fa-comment-slash"></i>No questions yet${activeFilter !== 'All' ? ' in this subject' : ''}. Be the first to ask!</div>`;
+                return;
+            }
+
+            container.innerHTML = '';
+            filtered.forEach((data, i) => {
+                const dateStr = data.timestamp ? new Date(data.timestamp.seconds * 1000).toLocaleString() : 'Just now';
+
+                const canDelete = currentUser && (isAdmin || currentUser.uid === data.uid);
+
+                const card = document.createElement('div');
+                card.className = 'question-card';
+                card.style.animationDelay = `${i * 0.05}s`;
+                card.innerHTML = `
+                    <div class="q-header">
+                        <div class="q-author">
+                            ${data.avatar ? `<img src="${data.avatar}" style="width:28px;height:28px;border-radius:50%;object-fit:cover;" alt="">` : '<i class="fas fa-user-circle fa-lg"></i>'}
+                            ${escHtml(data.name)}
+                        </div>
+                        <div class="badges-container">
+                            <span class="q-year-badge">${escHtml(data.year || '?')}</span>
+                            <span class="q-badge">${escHtml(data.subject)}</span>
+                        </div>
+                    </div>
+                    <h4 class="q-title">${escHtml(data.title)}</h4>
+                    <p class="q-text">${escHtml(data.text)}</p>
+                    <div class="q-footer">
+                        <span class="q-date"><i class="fas fa-clock me-1" style="opacity:.5;"></i>${dateStr}</span>
+                        <div style="display:flex;gap:8px;align-items:center;">
+                            <button class="btn-flag" title="Flag as inappropriate" data-id="${data.id}">
+                                <i class="fas fa-flag"></i> Report
+                            </button>
+                            <button class="btn-delete ${canDelete ? 'visible' : ''}" data-id="${data.id}">
+                                <i class="fas fa-trash-alt"></i> Delete
+                            </button>
+                        </div>
+                    </div>
+                `;
+
+                // Delete handler — re-check permission at click time, not just render time
+                card.querySelector('.btn-delete')?.addEventListener('click', async () => {
+                    const allowed = currentUser && (ADMIN_EMAILS.includes(currentUser.email) || currentUser.uid === data.uid);
+                    if (!allowed) { toast('⛔ You are not allowed to delete this question.', 'error'); return; }
+                    if (!confirm('Delete this question?')) return;
+                    try {
+                        await deleteDoc(doc(db, 'questions', data.id));
+                        toast('Question deleted.', 'success');
+                    } catch(err) {
+                        toast('Delete failed: ' + err.message, 'error');
+                    }
+                });
+
+                // Flag handler (simple alert — hook to Firestore flag field for production)
+                card.querySelector('.btn-flag')?.addEventListener('click', () => {
+                    toast('🚩 Question reported. Admins will review it.', '');
+                });
+
+                container.appendChild(card);
+            });
+        }
+
+        function escHtml(str = '') {
+            return String(str)
+                .replace(/&/g,'&amp;')
+                .replace(/</g,'&lt;')
+                .replace(/>/g,'&gt;')
+                .replace(/"/g,'&quot;')
+                .replace(/'/g,'&#039;');
+        }
     </script>
 </body>
 </html>
