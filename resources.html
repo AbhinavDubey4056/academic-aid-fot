@@ -22,7 +22,6 @@
             padding: 1rem 0;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
-
         .navbar-brand {
             font-size: 1.8rem;
             font-weight: 700;
@@ -31,20 +30,14 @@
             align-items: center;
             gap: 0.5rem;
         }
-
         .logo-icon {
-            width: 45px;
-            height: 45px;
+            width: 45px; height: 45px;
             background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
             border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: #fff;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; color: #fff;
             box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
         }
-
         .navbar-nav .nav-link {
             color: #64748b !important;
             margin: 0 0.5rem;
@@ -53,179 +46,279 @@
         }
         .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active { color: #2563eb !important; }
 
-        /* --- MAIN SECTION STYLES --- */
+        /* --- HERO BANNER --- */
+        .resources-hero {
+            background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            padding: 60px 0 50px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .resources-hero::before {
+            content: '';
+            position: absolute;
+            top: -60px; right: -60px;
+            width: 260px; height: 260px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 50%;
+        }
+        .resources-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -80px; left: -40px;
+            width: 300px; height: 300px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 50%;
+        }
+        .resources-hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 12px;
+            animation: fadeInUp 0.7s ease;
+        }
+        .resources-hero p {
+            color: rgba(255,255,255,0.82);
+            font-size: 1.15rem;
+            max-width: 560px;
+            margin: 0 auto 28px;
+            animation: fadeInUp 0.7s ease 0.1s both;
+        }
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            animation: fadeInUp 0.7s ease 0.2s both;
+        }
+        .hero-stat {
+            color: #fff;
+            text-align: center;
+        }
+        .hero-stat .num {
+            font-size: 1.7rem;
+            font-weight: 800;
+            display: block;
+        }
+        .hero-stat .lbl {
+            font-size: 0.82rem;
+            opacity: 0.75;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* --- MAIN SECTION --- */
         .main-container {
             padding: 40px 0 60px;
         }
 
-        /* QR Upload Card (New Style) */
+        /* QR Upload Card */
         .upload-card {
             background: #fff;
             border-radius: 20px;
-            padding: 40px 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            margin-bottom: 50px;
+            padding: 36px 30px;
+            box-shadow: 0 8px 30px rgba(37,99,235,0.08);
+            margin-bottom: 44px;
             border: 1px solid #e2e8f0;
             animation: fadeInDown 0.6s ease;
-            text-align: center; 
+            text-align: center;
+            position: relative;
+            overflow: hidden;
         }
-
+        .upload-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #7c3aed);
+        }
         .upload-card h2 {
             font-weight: 700;
             color: #1e293b;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
         }
-
         .qr-box {
             background: #f8fafc;
             border: 2px dashed #cbd5e1;
             border-radius: 15px;
             padding: 20px;
             display: inline-block;
-            margin: 20px 0;
-            transition: transform 0.3s ease;
+            margin: 16px 0;
+            transition: all 0.3s ease;
         }
-        
         .qr-box:hover {
-            transform: scale(1.02);
+            transform: scale(1.03);
             border-color: #2563eb;
+            box-shadow: 0 8px 24px rgba(37,99,235,0.12);
         }
+        .qr-image { max-width: 180px; height: auto; border-radius: 10px; }
+        .instruction-text { color: #64748b; font-size: 1rem; max-width: 560px; margin: 0 auto; }
+        .highlight-text { color: #2563eb; font-weight: 600; }
 
-        .qr-image {
-            max-width: 200px;
-            height: auto;
-            border-radius: 10px;
+        /* --- SEARCH & FILTERS --- */
+        .search-filter-bar {
+            background: #fff;
+            border-radius: 16px;
+            padding: 20px 24px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+            border: 1px solid #e2e8f0;
+            margin-bottom: 32px;
         }
-
-        .instruction-text {
-            color: #64748b;
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .highlight-text {
-            color: #2563eb;
-            font-weight: 600;
-        }
-
-        /* --- SEARCH BAR CSS --- */
         .search-container {
             position: relative;
-            max-width: 600px;
-            margin: 0 auto 30px auto;
+            max-width: 100%;
         }
-
         .search-input {
             width: 100%;
-            padding: 15px 20px 15px 50px;
+            padding: 13px 20px 13px 46px;
             border-radius: 50px;
-            border: 1px solid #e2e8f0;
-            background: #fff;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            border: 1.5px solid #e2e8f0;
+            background: #f8fafc;
             font-size: 1rem;
             transition: all 0.3s;
         }
-
         .search-input:focus {
             outline: none;
             border-color: #3b82f6;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.15);
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
         }
-
         .search-icon {
             position: absolute;
-            left: 20px;
-            top: 50%;
+            left: 18px; top: 50%;
             transform: translateY(-50%);
-            color: #94a3b8;
-            font-size: 1.1rem;
+            color: #94a3b8; font-size: 1rem;
         }
 
-        /* Resource Grid */
+        /* Section heading */
+        .section-heading {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+        }
+        .section-heading h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin: 0;
+        }
+        .section-heading h3 i { color: #3b82f6; }
+        .updated-badge {
+            background: #f0fdf4;
+            color: #16a34a;
+            border: 1px solid #bbf7d0;
+            border-radius: 20px;
+            padding: 4px 14px;
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+
+        /* Resource Cards */
         .resource-card {
             background: #fff;
-            border-radius: 15px;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
             border: 1px solid #e2e8f0;
             transition: all 0.3s ease;
             height: 100%;
             display: flex;
             flex-direction: column;
         }
-
         .resource-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            transform: translateY(-6px);
+            box-shadow: 0 16px 36px rgba(37,99,235,0.12);
+            border-color: #bfdbfe;
         }
-
         .card-preview {
-            height: 160px;
+            height: 150px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #f1f5f9;
-            color: #64748b;
-            font-size: 4rem;
+            background: linear-gradient(135deg, #eff6ff, #f5f3ff);
+            color: #3b82f6;
+            font-size: 3.5rem;
             position: relative;
         }
+        .card-preview img { width: 100%; height: 100%; object-fit: cover; }
 
-        .card-preview img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        /* Type badge on card */
+        .card-type-badge {
+            position: absolute;
+            top: 10px; right: 10px;
+            background: rgba(255,255,255,0.92);
+            color: #2563eb;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: 1px solid #bfdbfe;
         }
 
-        .card-body {
-            padding: 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
+        .card-body { padding: 18px; flex-grow: 1; display: flex; flex-direction: column; }
         .res-title {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 700;
             color: #1e293b;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
             text-overflow: ellipsis;
             overflow: hidden;
             white-space: nowrap;
         }
-
         .res-meta {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: #94a3b8;
-            margin-bottom: 15px;
+            margin-bottom: 14px;
             display: flex;
             justify-content: space-between;
-        }
-
-        .card-actions {
-            margin-top: auto;
-            display: flex;
-            justify-content: center; 
             align-items: center;
         }
-
+        .res-meta .date-chip {
+            background: #f1f5f9;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+        }
+        .card-actions { margin-top: auto; }
         .btn-view {
-            background: #eff6ff;
-            color: #2563eb;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: #fff;
             border: none;
             padding: 10px 20px;
             border-radius: 10px;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 600;
             width: 100%;
             text-decoration: none;
             text-align: center;
-            transition: background 0.2s;
+            transition: all 0.25s;
+            display: block;
+            box-shadow: 0 4px 12px rgba(37,99,235,0.25);
         }
-        .btn-view:hover { background: #dbeafe; color: #1d4ed8; }
+        .btn-view:hover {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: #fff;
+            box-shadow: 0 6px 18px rgba(37,99,235,0.35);
+            transform: translateY(-1px);
+        }
+
+        /* Empty / no results */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #94a3b8;
+        }
+        .empty-state i { font-size: 3.5rem; margin-bottom: 16px; opacity: 0.4; display: block; }
 
         @keyframes fadeInDown {
             from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
     </style>
@@ -263,6 +356,27 @@
         </div>
     </nav>
 
+    <section class="resources-hero">
+        <div class="container" style="position: relative; z-index: 1;">
+            <h1><i class="fas fa-book-open me-2"></i>Community Resources</h1>
+            <p>Explore notes, papers & study materials shared by students, for students</p>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <span class="num">200+</span>
+                    <span class="lbl">Resources</span>
+                </div>
+                <div class="hero-stat" style="border-left: 1px solid rgba(255,255,255,0.2); border-right: 1px solid rgba(255,255,255,0.2); padding: 0 40px;">
+                    <span class="num">300+</span>
+                    <span class="lbl">Students</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="num">Free</span>
+                    <span class="lbl">Always</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="main-container">
         <div class="container">
             
@@ -270,18 +384,15 @@
                 <div class="col-lg-8">
                     <div class="upload-card">
                         <h2><i class="fas fa-cloud-upload-alt text-primary me-2"></i>Contribute to the Community</h2>
-                        
                         <p class="instruction-text">
-                            We are building the largest library of student resources. 
-                            <br>Scan the QR code below to fill out the form and submit your notes.
+                            Help us build the largest student resource library!<br>
+                            Scan the QR code below to submit your notes.
                         </p>
-
                         <div class="qr-box">
                             <a href="https://docs.google.com/forms/d/e/1FAIpQLSd1Fp6oemfDU8yIb5Hn861Yg2Lig9WXv0KG3of9fyrLHb3Mhw/viewform?usp=publish-editor" target="_blank">
                                 <img src="form.png" alt="Scan to Upload" class="qr-image">
                             </a>
                         </div>
-                        
                         <p class="text-muted small">
                             Submitted resources will be reviewed and <span class="highlight-text">updated shortly</span> on this page.
                         </p>
@@ -289,17 +400,24 @@
                 </div>
             </div>
 
-            <div class="row mb-3">
-                <div class="col-12 text-center">
-                    <div class="search-container">
-                        <i class="fas fa-search search-icon"></i>
-                        <input type="text" id="searchInput" class="search-input" placeholder="Search notes, cheat sheets, papers...">
+            <!-- Search + heading bar -->
+            <div class="search-filter-bar">
+                <div class="row align-items-center g-3">
+                    <div class="col-md-8">
+                        <div class="search-container">
+                            <i class="fas fa-search search-icon"></i>
+                            <input type="text" id="searchInput" class="search-input" placeholder="Search notes, cheat sheets, papers...">
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-md-end text-center">
+                        <span class="text-muted small"><i class="fas fa-sync-alt me-1"></i>Updated Manually</span>
                     </div>
                 </div>
-                <div class="col-12 d-flex justify-content-between align-items-center">
-                    <h3 class="fw-bold text-secondary"><i class="fas fa-layer-group me-2"></i>Community Uploads</h3>
-                    <div class="text-muted small">Updated Manually</div>
-                </div>
+            </div>
+
+            <div class="section-heading">
+                <h3><i class="fas fa-layer-group me-2"></i>Community Uploads</h3>
+                <span class="updated-badge"><i class="fas fa-circle me-1" style="font-size:0.6rem;"></i>Live</span>
             </div>
 
             <div id="resourcesGrid" class="row g-4">
@@ -346,7 +464,7 @@
             allResources = []; // Reset array on update
             
             if (snapshot.empty) {
-                grid.innerHTML = `<div class="col-12 text-center text-muted py-5"><h4>No resources yet. Check back soon! 🚀</h4></div>`;
+                grid.innerHTML = `<div class="col-12 text-center py-5"><div class="spinner-border text-primary" role="status"></div><p class="mt-2 text-muted">Loading resources...</p></div>`;
                 return;
             }
 
@@ -386,36 +504,39 @@
 
             if (dataArray.length === 0) {
                 grid.innerHTML = `
-                <div class="col-12 text-center text-muted py-5">
-                    <i class="fas fa-search fa-3x mb-3 text-secondary" style="opacity: 0.3"></i>
-                    <h4>No matches found</h4>
-                    <p>Try searching for a different keyword.</p>
+                <div class="col-12 empty-state">
+                    <i class="fas fa-search-minus"></i>
+                    <h4 style="color:#475569; font-weight:700;">No matches found</h4>
+                    <p>Try a different keyword or browse all resources.</p>
                 </div>`;
                 return;
             }
 
             dataArray.forEach((data) => {
-                // Determine icon/preview based on type
                 let previewHtml;
-                if (data.fileType && data.fileType.startsWith('image/')) {
+                const isImage = data.fileType && data.fileType.startsWith('image/');
+                const typeLabel = isImage ? 'Image' : 'PDF';
+
+                if (isImage) {
                     previewHtml = `<img src="${data.fileUrl}" alt="Preview" loading="lazy">`;
                 } else {
-                    previewHtml = `<i class="fas fa-file-pdf text-danger"></i>`;
+                    previewHtml = `<i class="fas fa-file-pdf" style="color:#ef4444;"></i>`;
                 }
 
-                const dateStr = data.timestamp ? new Date(data.timestamp.seconds * 1000).toLocaleDateString() : 'Recent';
+                const dateStr = data.timestamp ? new Date(data.timestamp.seconds * 1000).toLocaleDateString('en-IN', {day:'numeric', month:'short', year:'numeric'}) : 'Recent';
 
                 const cardHtml = `
-                <div class="col-md-6 col-lg-4 col-xl-3 animate-card">
+                <div class="col-md-6 col-lg-4 col-xl-3">
                     <div class="resource-card">
                         <div class="card-preview">
                             ${previewHtml}
+                            <span class="card-type-badge">${typeLabel}</span>
                         </div>
                         <div class="card-body">
                             <div class="res-title" title="${data.title}">${data.title}</div>
                             <div class="res-meta">
-                                <span>${data.fileName ? data.fileName.substring(0, 15) + '...' : 'File'}</span>
-                                <span>${dateStr}</span>
+                                <span><i class="fas fa-file me-1"></i>${data.fileName ? data.fileName.substring(0, 14) + '…' : 'File'}</span>
+                                <span class="date-chip"><i class="fas fa-calendar-alt me-1"></i>${dateStr}</span>
                             </div>
                             <div class="card-actions">
                                 <a href="${data.fileUrl}" target="_blank" class="btn-view">
