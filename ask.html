@@ -51,15 +51,11 @@
             gap: 0.5rem;
         }
         .logo-icon {
-            width: 45px;
-            height: 45px;
+            width: 45px; height: 45px;
             background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
             border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: #fff;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; color: #fff;
             box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
         }
         .navbar-nav .nav-link {
@@ -69,24 +65,16 @@
             transition: all 0.3s ease;
             position: relative;
         }
-        .navbar-nav .nav-link:hover {
-            color: #2563eb !important;
-            transform: translateY(-2px);
-        }
+        .navbar-nav .nav-link:hover { color: #2563eb !important; transform: translateY(-2px); }
         .navbar-nav .nav-link::after {
             content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 50%;
+            position: absolute; bottom: -5px; left: 50%;
             transform: translateX(-50%);
-            width: 0;
-            height: 2px;
+            width: 0; height: 2px;
             background: #2563eb;
             transition: width 0.3s ease;
         }
-        .navbar-nav .nav-link:hover::after {
-            width: 80%;
-        }
+        .navbar-nav .nav-link:hover::after { width: 80%; }
 
         /* ── AUTH BAR ── */
         .auth-bar {
@@ -98,265 +86,322 @@
         .auth-bar .container { display: flex; align-items: center; justify-content: flex-end; gap: 12px; }
         .user-pill {
             display: flex; align-items: center; gap: 8px;
-            background: var(--blue-pale);
-            color: #3730a3;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-weight: 600;
+            background: var(--blue-pale); color: #3730a3;
+            padding: 4px 12px; border-radius: 20px; font-weight: 600;
         }
         .user-pill img { width: 22px; height: 22px; border-radius: 50%; }
-
         .btn-google {
             display: flex; align-items: center; gap: 8px;
-            background: #fff;
-            border: 1.5px solid var(--border);
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-weight: 600;
-            color: var(--slate);
-            cursor: pointer;
-            transition: all .2s;
-            font-size: 0.85rem;
+            background: #fff; border: 1.5px solid var(--border);
+            padding: 6px 16px; border-radius: 20px;
+            font-weight: 600; color: var(--slate);
+            cursor: pointer; transition: all .2s; font-size: 0.85rem;
         }
         .btn-google:hover { border-color: var(--blue); color: var(--blue); box-shadow: 0 3px 12px rgba(37,99,235,.15); }
         .btn-signout { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 0.85rem; transition: color .2s; }
         .btn-signout:hover { color: var(--danger); }
 
+        /* ── HERO BANNER ── */
+        .hero-banner {
+            background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 60%, #3b82f6 100%);
+            padding: 50px 0 46px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-banner::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='40' cy='40' r='5'/%3E%3C/g%3E%3C/svg%3E");
+        }
+        .hero-blob {
+            position: absolute; top: -80px; right: -80px;
+            width: 340px; height: 340px;
+            background: rgba(255,255,255,0.07);
+            border-radius: 50%;
+        }
+        .hero-blob2 {
+            position: absolute; bottom: -60px; left: 10%;
+            width: 200px; height: 200px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 50%;
+        }
+        .hero-content { position: relative; z-index: 2; }
+        .hero-live-badge {
+            display: inline-flex; align-items: center; gap: 7px;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.22);
+            color: #bfdbfe;
+            padding: 5px 14px; border-radius: 20px;
+            font-size: 0.78rem; font-weight: 600;
+            letter-spacing: 0.05em; text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        .live-dot {
+            width: 7px; height: 7px;
+            border-radius: 50%;
+            background: #4ade80;
+            animation: pulse 1.8s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.3); }
+        }
+        .hero-title {
+            font-size: 2.4rem; font-weight: 800; color: #fff;
+            margin-bottom: 10px; line-height: 1.2; letter-spacing: -0.02em;
+        }
+        .hero-title span { color: #bfdbfe; }
+        .hero-sub { color: #93c5fd; font-size: 1rem; margin-bottom: 30px; max-width: 480px; line-height: 1.6; }
+        .hero-stats { display: flex; gap: 0; align-items: stretch; }
+        .hero-stat {
+            padding: 0 28px;
+            border-right: 1px solid rgba(255,255,255,0.2);
+            text-align: center;
+        }
+        .hero-stat:first-child { padding-left: 0; }
+        .hero-stat:last-child { border-right: none; }
+        .hero-stat-num { font-size: 1.8rem; font-weight: 800; color: #fff; line-height: 1; }
+        .hero-stat-label { font-size: 0.73rem; color: #93c5fd; font-weight: 500; margin-top: 4px; }
+        .hero-right-card {
+            position: relative; z-index: 2;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.22);
+            border-radius: 24px;
+            padding: 28px 30px;
+            text-align: center;
+            backdrop-filter: blur(12px);
+        }
+        .hero-right-card .big-icon { font-size: 3.2rem; color: #bfdbfe; margin-bottom: 12px; display: block; }
+        .hero-right-card p { color: #93c5fd; font-size: 0.88rem; font-weight: 500; line-height: 1.5; }
+
+        /* ── HOW IT WORKS STRIP ── */
+        .how-strip {
+            background: #fff;
+            border-bottom: 1px solid var(--border);
+            padding: 13px 0;
+        }
+        .how-items {
+            display: flex; align-items: center; justify-content: center;
+            gap: 4px; flex-wrap: wrap;
+        }
+        .how-item {
+            display: flex; align-items: center; gap: 7px;
+            font-size: 0.82rem; color: var(--muted); font-weight: 500;
+            padding: 4px 12px;
+        }
+        .how-item i { color: var(--blue); }
+        .how-sep { color: #cbd5e1; font-size: 1rem; padding: 0 2px; }
+
         /* ── LAYOUT ── */
-        .page-wrap { padding: 50px 0 80px; }
+        .page-wrap { padding: 40px 0 80px; }
 
         /* ── FORM CARD ── */
         .ask-card {
             background: var(--card);
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            padding: 36px;
-            box-shadow: 0 8px 32px rgba(0,0,0,.06);
+            padding: 0;
+            box-shadow: 0 4px 24px rgba(0,0,0,.06);
+            overflow: hidden;
         }
-        .ask-card h2 {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-size: 1.5rem;
-            color: var(--slate);
-            margin-bottom: 18px;
+        .ask-card-top {
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            padding: 22px 26px 20px;
         }
+        .ask-card-top h2 {
+            font-size: 1.25rem; font-weight: 700; color: #fff; margin: 0 0 4px;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .ask-card-top p { font-size: 0.82rem; color: #bfdbfe; margin: 0; }
+        .ask-card-body { padding: 22px 26px; }
 
         /* Note / Telegram boxes */
         .note-box {
-            background: var(--warn-bg);
-            border: 1px solid var(--warn-border);
-            color: var(--warn-text);
-            padding: 12px 15px;
-            border-radius: 10px;
-            margin-bottom: 14px;
-            font-size: 0.85rem;
+            background: var(--warn-bg); border: 1px solid var(--warn-border);
+            color: var(--warn-text); padding: 12px 15px;
+            border-radius: 10px; margin-bottom: 12px; font-size: 0.83rem;
         }
-        .note-box strong { display: block; margin-bottom: 4px; }
+        .note-box strong { display: flex; align-items: center; gap: 6px; margin-bottom: 6px; }
         .note-box ul { margin: 0; padding-left: 18px; }
-
+        .note-box li { margin-bottom: 3px; }
         .telegram-box {
-            background: #e0f2fe;
-            border: 1px solid #bae6fd;
-            color: #0369a1;
-            padding: 12px 15px;
-            border-radius: 10px;
-            margin-bottom: 18px;
-            font-size: 0.85rem;
-            display: flex; align-items: center; justify-content: space-between; gap: 10px;
+            background: #e0f2fe; border: 1px solid #bae6fd; color: #0369a1;
+            padding: 12px 15px; border-radius: 10px; margin-bottom: 16px;
+            font-size: 0.83rem; display: flex; align-items: center;
+            justify-content: space-between; gap: 10px;
         }
         .btn-telegram {
             background: #0284c7; color: white;
             padding: 5px 14px; border-radius: 20px;
             text-decoration: none; font-weight: 600;
-            white-space: nowrap; font-size: 0.8rem;
-            transition: background .2s;
+            white-space: nowrap; font-size: 0.78rem; transition: background .2s;
         }
         .btn-telegram:hover { background: #0369a1; color: white; }
 
+        /* Tips box */
+        .tips-box {
+            background: var(--blue-pale); border-radius: 10px;
+            padding: 12px 15px; margin-bottom: 16px;
+        }
+        .tips-box-title {
+            font-size: 0.78rem; font-weight: 700; color: #3730a3;
+            margin-bottom: 7px; display: flex; align-items: center; gap: 6px;
+        }
+        .tips-box ul { margin: 0; padding-left: 16px; font-size: 0.8rem; color: #4338ca; }
+        .tips-box li { margin-bottom: 3px; }
+
         /* Form elements */
+        .form-label-sm { font-size: 0.78rem; font-weight: 600; color: var(--slate); margin-bottom: 5px; display: block; }
+        .selects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
         .form-control, .form-select {
-            border-radius: 10px;
-            border: 1.5px solid var(--border);
+            border-radius: 10px; border: 1.5px solid var(--border);
             padding: 10px 14px;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-size: 0.92rem;
-            transition: border-color .2s, box-shadow .2s;
+            font-size: 0.9rem; transition: border-color .2s, box-shadow .2s;
+            background: var(--bg);
         }
         .form-control:focus, .form-select:focus {
             border-color: var(--blue-light);
             box-shadow: 0 0 0 3px rgba(59,130,246,.15);
-            outline: none;
+            outline: none; background: #fff;
         }
-
-        /* Character counter */
         .char-counter {
-            font-size: 0.78rem;
-            color: var(--muted);
-            text-align: right;
-            margin-top: -10px;
-            margin-bottom: 10px;
-            transition: color .2s;
+            font-size: 0.76rem; color: var(--muted);
+            text-align: right; margin-top: 4px; margin-bottom: 10px; transition: color .2s;
         }
         .char-counter.warn { color: #f59e0b; }
         .char-counter.danger { color: var(--danger); }
 
         .btn-submit {
             background: linear-gradient(135deg, var(--blue-light), var(--blue));
-            border: none;
-            padding: 12px 30px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #fff;
-            width: 100%;
-            transition: all .3s;
-            font-size: 0.95rem;
-            letter-spacing: .02em;
+            border: none; padding: 13px 30px; border-radius: 50px;
+            font-weight: 700; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff; width: 100%; transition: all .3s;
+            font-size: 0.95rem; letter-spacing: .02em; cursor: pointer;
         }
-        .btn-submit:hover:not(:disabled) {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 28px rgba(37,99,235,.4);
-        }
+        .btn-submit:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(37,99,235,.4); }
         .btn-submit:disabled { opacity: .6; cursor: not-allowed; }
 
-        /* Rate limit notice */
         .rate-notice {
-            display: none;
-            background: #fef2f2;
-            border: 1px solid #fecaca;
-            color: var(--danger);
-            padding: 10px 14px;
-            border-radius: 10px;
-            font-size: 0.85rem;
-            margin-bottom: 12px;
-            text-align: center;
+            display: none; background: #fef2f2; border: 1px solid #fecaca;
+            color: var(--danger); padding: 10px 14px; border-radius: 10px;
+            font-size: 0.83rem; margin-bottom: 12px; text-align: center;
         }
 
-        /* Login gate */
-        .login-gate {
-            text-align: center;
-            padding: 20px 0 8px;
-        }
-        .login-gate p { color: var(--muted); font-size: 0.9rem; margin-bottom: 14px; }
+        .login-gate { text-align: center; padding: 10px 0 4px; }
+        .login-gate p { color: var(--muted); font-size: 0.88rem; margin-bottom: 14px; }
 
-        /* ── QUESTIONS FEED ── */
-        .feed-header {
-            display: flex; align-items: center; justify-content: space-between;
-            margin-bottom: 20px;
+        /* ── FEED ── */
+        .feed-top {
+            display: flex; align-items: flex-start; justify-content: space-between;
+            margin-bottom: 4px; gap: 12px;
         }
-        .feed-header h3 {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-size: 1.4rem;
-            color: var(--slate);
+        .feed-top h3 { font-size: 1.45rem; font-weight: 700; color: var(--slate); }
+        .feed-eyebrow {
+            font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
+            text-transform: uppercase; color: var(--blue); margin-bottom: 4px;
+            display: flex; align-items: center; gap: 6px;
         }
+        .live-dot-sm {
+            width: 6px; height: 6px; border-radius: 50%; background: #22c55e;
+            animation: pulse 1.8s infinite; display: inline-block;
+        }
+        #questionCount {
+            background: var(--blue-pale); color: var(--blue);
+            padding: 5px 14px; border-radius: 20px; font-size: 0.82rem; font-weight: 700;
+            white-space: nowrap; margin-top: 4px;
+        }
+        .feed-sub { color: var(--muted); font-size: 0.88rem; margin-bottom: 18px; }
 
         /* Filter pills */
-        .filter-pills { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+        .filter-pills { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
         .pill {
-            padding: 5px 16px;
-            border-radius: 20px;
-            border: 1.5px solid var(--border);
-            background: #fff;
-            color: var(--muted);
-            font-size: 0.82rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all .2s;
+            padding: 6px 16px; border-radius: 20px;
+            border: 1.5px solid var(--border); background: #fff;
+            color: var(--muted); font-size: 0.82rem; font-weight: 600;
+            cursor: pointer; transition: all .2s;
         }
         .pill.active { background: var(--blue); border-color: var(--blue); color: #fff; }
         .pill:hover:not(.active) { border-color: var(--blue-light); color: var(--blue); }
 
         /* Question card */
-        .questions-list { display: flex; flex-direction: column; gap: 16px; }
-
+        .questions-list { display: flex; flex-direction: column; gap: 14px; }
         .question-card {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 24px 24px 18px 30px;
-            position: relative;
-            overflow: hidden;
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: var(--radius); padding: 22px 22px 16px 28px;
+            position: relative; overflow: hidden;
             animation: slideUp .4s ease both;
             box-shadow: 0 2px 8px rgba(0,0,0,.04);
-            transition: box-shadow .2s;
+            transition: box-shadow .25s, transform .25s, border-color .2s;
         }
-        .question-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,.08); }
-
+        .question-card:hover {
+            box-shadow: 0 8px 28px rgba(37,99,235,.1);
+            border-color: #c7d7fe; transform: translateY(-2px);
+        }
         @keyframes slideUp {
             from { opacity: 0; transform: translateY(16px); }
             to   { opacity: 1; transform: translateY(0); }
         }
-
         .question-card::before {
             content: '';
             position: absolute; top: 0; left: 0; bottom: 0; width: 4px;
             background: linear-gradient(180deg, var(--blue-light), var(--blue));
             border-radius: 4px 0 0 4px;
         }
-
-        .q-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
-        .q-author { font-weight: 700; color: var(--blue); display: flex; align-items: center; gap: 8px; font-size: 0.95rem; }
+        .q-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; gap: 10px; }
+        .q-author { font-weight: 700; color: var(--blue); display: flex; align-items: center; gap: 8px; font-size: 0.92rem; }
         .badges-container { display: flex; gap: 6px; align-items: center; }
-        .q-badge { background: var(--blue-pale); color: #3730a3; padding: 3px 10px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; }
-        .q-year-badge { background: #f1f5f9; color: #475569; padding: 3px 10px; border-radius: 20px; font-size: 0.78rem; font-weight: 600; }
-
-        .q-title { font-size: 1.15rem; font-weight: 700; color: var(--slate); margin-bottom: 7px; line-height: 1.4; }
-        .q-text { color: var(--muted); line-height: 1.65; font-size: 0.92rem; }
-        .q-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 14px; }
-        .q-date { font-size: 0.78rem; color: #94a3b8; font-style: italic; }
-
-        /* Admin delete */
+        .q-badge { background: var(--blue-pale); color: #3730a3; padding: 3px 10px; border-radius: 20px; font-size: 0.76rem; font-weight: 700; }
+        .q-year-badge { background: #f1f5f9; color: #475569; padding: 3px 10px; border-radius: 20px; font-size: 0.76rem; font-weight: 600; }
+        .q-title { font-size: 1.08rem; font-weight: 700; color: var(--slate); margin-bottom: 7px; line-height: 1.4; }
+        .q-text { color: var(--muted); line-height: 1.7; font-size: 0.9rem; }
+        .q-footer {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border);
+        }
+        .q-date { font-size: 0.76rem; color: #94a3b8; font-style: italic; display: flex; align-items: center; gap: 4px; }
         .btn-delete {
-            background: none;
-            border: 1px solid #fca5a5;
-            color: var(--danger);
-            padding: 3px 12px;
-            border-radius: 20px;
-            font-size: 0.78rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all .2s;
-            display: none; /* shown only for admin/owner */
+            background: none; border: 1px solid #fca5a5; color: var(--danger);
+            padding: 3px 12px; border-radius: 20px;
+            font-size: 0.76rem; font-weight: 600; cursor: pointer;
+            transition: all .2s; display: none; align-items: center; gap: 4px;
         }
         .btn-delete:hover { background: #fef2f2; }
-        .btn-delete.visible { display: inline-flex; align-items: center; gap: 4px; }
-
-        /* Abuse flag button */
+        .btn-delete.visible { display: inline-flex; }
         .btn-flag {
-            background: none;
-            border: none;
-            color: #cbd5e1;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: color .2s;
-            padding: 0 4px;
+            background: none; border: none; color: #cbd5e1;
+            font-size: 0.78rem; cursor: pointer; transition: color .2s; padding: 0 4px;
         }
         .btn-flag:hover { color: #f97316; }
 
-        /* Empty / loading state */
-        .state-msg { text-align: center; padding: 50px 20px; color: var(--muted); }
+        /* Empty state */
+        .state-msg { text-align: center; padding: 60px 20px; color: var(--muted); }
         .state-msg i { font-size: 2.5rem; margin-bottom: 14px; opacity: .3; display: block; }
+        .state-msg small { display: block; margin-top: 6px; color: #94a3b8; font-size: 0.85rem; }
 
         /* Toast */
-        .toast-wrap {
-            position: fixed; bottom: 24px; right: 24px; z-index: 9999;
-            display: flex; flex-direction: column; gap: 10px;
-        }
+        .toast-wrap { position: fixed; bottom: 24px; right: 24px; z-index: 9999; display: flex; flex-direction: column; gap: 10px; }
         .toast-msg {
-            background: var(--slate);
-            color: #fff;
-            padding: 12px 20px;
-            border-radius: 12px;
-            font-size: 0.88rem;
-            box-shadow: 0 8px 24px rgba(0,0,0,.2);
-            animation: toastIn .3s ease;
-            max-width: 280px;
+            background: var(--slate); color: #fff;
+            padding: 12px 20px; border-radius: 12px; font-size: 0.88rem;
+            box-shadow: 0 8px 24px rgba(0,0,0,.2); animation: toastIn .3s ease; max-width: 300px;
         }
         .toast-msg.success { background: #166534; }
         .toast-msg.error   { background: #991b1b; }
         @keyframes toastIn { from { opacity:0; transform: translateY(10px); } to { opacity:1; transform: translateY(0); } }
 
-        /* ADMIN BADGE */
         .admin-badge { background: #fef3c7; color: #92400e; padding: 3px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; }
+
+        @media (max-width: 991px) {
+            .hero-title { font-size: 1.8rem; }
+            .hero-right-card { display: none; }
+            .selects-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 576px) {
+            .hero-stats { gap: 0; }
+            .hero-stat { padding: 0 16px; }
+            .how-strip { display: none; }
+        }
     </style>
 </head>
 <body>
@@ -365,9 +410,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-                <div class="logo-icon">
-                    <i class="fas fa-graduation-cap"></i>
-                </div>
+                <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
                 Academic Aid
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -375,21 +418,11 @@
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.html">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contactus.html">Contact Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="privacy.html">Privacy Policy</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="terms.html">Terms & Conditions</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contactus.html">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="privacy.html">Privacy Policy</a></li>
+                    <li class="nav-item"><a class="nav-link" href="terms.html">Terms & Conditions</a></li>
                 </ul>
             </div>
         </div>
@@ -398,7 +431,7 @@
     <!-- AUTH BAR -->
     <div class="auth-bar">
         <div class="container">
-            <div id="authLoggedOut">
+            <div id="authLoggedOut" style="display:flex; align-items:center; gap:12px;">
                 <span style="color:var(--muted);">Sign in to post questions</span>
                 <button class="btn-google" id="btnGoogleLogin">
                     <svg width="16" height="16" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
@@ -416,99 +449,174 @@
         </div>
     </div>
 
-    <!-- PAGE -->
+    <!-- HERO BANNER -->
+    <div class="hero-banner">
+        <div class="hero-blob"></div>
+        <div class="hero-blob2"></div>
+        <div class="container">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-8 hero-content">
+                    <div class="hero-live-badge">
+                        <span class="live-dot"></span>
+                        Live Community Q&A
+                    </div>
+                    <h1 class="hero-title">Got a question?<br><span>We've got your back.</span></h1>
+                    <p class="hero-sub">Post your academic doubts and get help from peers, seniors, and the community — instantly.</p>
+                    <div class="hero-stats">
+                        <div class="hero-stat">
+                            <div class="hero-stat-num" id="heroTotalQ">—</div>
+                            <div class="hero-stat-label">Questions Posted</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-num">4</div>
+                            <div class="hero-stat-label">Branches</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-num">Free</div>
+                            <div class="hero-stat-label">Always & Forever</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 d-flex justify-content-end">
+                    <div class="hero-right-card">
+                        <i class="fas fa-comments big-icon"></i>
+                        <p>Peer-to-peer<br>academic support</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HOW IT WORKS STRIP -->
+    <div class="how-strip">
+        <div class="container">
+            <div class="how-items">
+                <div class="how-item"><i class="fas fa-sign-in-alt"></i> Sign in with Google</div>
+                <span class="how-sep">›</span>
+                <div class="how-item"><i class="fas fa-pen"></i> Post your question</div>
+                <span class="how-sep">›</span>
+                <div class="how-item"><i class="fas fa-users"></i> Community responds</div>
+                <span class="how-sep">›</span>
+                <div class="how-item"><i class="fab fa-telegram"></i> Get faster help on Telegram</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE BODY -->
     <div class="container page-wrap">
         <div class="row g-4">
 
             <!-- LEFT: ASK FORM -->
             <div class="col-lg-4">
-                <div class="ask-card sticky-top" style="top: 120px;">
-                    <h2><i class="fas fa-pen-fancy me-2" style="color:var(--blue);"></i>Ask a Question</h2>
+                <div class="ask-card sticky-top" style="top: 90px;">
 
-                    <div class="note-box">
-                        <strong><i class="fas fa-shield-alt me-1"></i> Community Rules</strong>
-                        <ul>
-                            <li>No abusive, offensive, or spam content.</li>
-                            <li>Max 3 questions per hour per account.</li>
-                            <li>Questions deleted after solving.</li>
-                            <li>Violations = permanent ban.</li>
-                        </ul>
+                    <div class="ask-card-top">
+                        <h2><i class="fas fa-pen-fancy"></i> Ask a Question</h2>
+                        <p>Get help from your peers instantly</p>
                     </div>
 
-                    <div class="telegram-box">
-                        <div><i class="fab fa-telegram me-1"></i> Get faster answers on Telegram:</div>
-                        <a href="https://t.me/academicaidcommunity" target="_blank" class="btn-telegram">Join <i class="fas fa-arrow-right ms-1"></i></a>
+                    <div class="ask-card-body">
+
+                        <div class="note-box">
+                            <strong><i class="fas fa-shield-alt"></i> Community Rules</strong>
+                            <ul>
+                                <li>No abusive, offensive, or spam content.</li>
+                                <li>Max 3 questions per hour per account.</li>
+                                <li>Questions deleted after solving.</li>
+                                <li>Violations = permanent ban.</li>
+                            </ul>
+                        </div>
+
+                        <div class="telegram-box">
+                            <div><i class="fab fa-telegram me-1"></i> Get faster answers on Telegram:</div>
+                            <a href="https://t.me/academicaidcommunity" target="_blank" class="btn-telegram">Join <i class="fas fa-arrow-right ms-1"></i></a>
+                        </div>
+
+                        <!-- LOGIN GATE -->
+                        <div id="loginGate" class="login-gate">
+                            <p><i class="fas fa-lock me-1"></i> You must be signed in to post a question.</p>
+                            <button class="btn-google" id="btnGoogleLogin2" style="margin: 0 auto;">
+                                <svg width="16" height="16" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                                Sign in with Google
+                            </button>
+                        </div>
+
+                        <!-- FORM (shown when logged in) -->
+                        <form id="helpForm" style="display:none;">
+                            <div class="rate-notice" id="rateNotice">
+                                <i class="fas fa-clock me-1"></i> You've reached the limit of 3 questions/hour. Please wait before posting again.
+                            </div>
+
+                            <div class="tips-box">
+                                <div class="tips-box-title"><i class="fas fa-lightbulb"></i> Tips for a great question</div>
+                                <ul>
+                                    <li>Be specific — describe what you tried</li>
+                                    <li>Include the course/topic name</li>
+                                    <li>Keep it clear and to the point</li>
+                                </ul>
+                            </div>
+
+                            <div class="selects-grid">
+                                <div>
+                                    <label class="form-label-sm">Year</label>
+                                    <select class="form-select" id="studentYear" required>
+                                        <option value="" disabled selected>Select</option>
+                                        <option>1st Year</option>
+                                        <option>2nd Year</option>
+                                        <option>3rd Year</option>
+                                        <option>4th Year</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="form-label-sm">Branch</label>
+                                    <select class="form-select" id="subjectTag" required>
+                                        <option value="" disabled selected>Select</option>
+                                        <option value="General">General</option>
+                                        <option value="CSE">CSE</option>
+                                        <option value="ECE">ECE</option>
+                                        <option value="EE">EE</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label-sm">Question Title</label>
+                                <input type="text" class="form-control" id="questionTitle" maxlength="100" placeholder="e.g., Help with recursion in C++" required>
+                                <div class="char-counter" id="titleCounter">0 / 100</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label-sm">Describe your problem</label>
+                                <textarea class="form-control" id="questionText" rows="4" maxlength="600" placeholder="Explain what you've tried and where you're stuck..." required></textarea>
+                                <div class="char-counter" id="textCounter">0 / 600</div>
+                            </div>
+
+                            <button type="submit" class="btn btn-submit" id="submitBtn">
+                                <i class="fas fa-paper-plane me-2"></i>Post Question
+                            </button>
+                        </form>
                     </div>
-
-                    <!-- LOGIN GATE -->
-                    <div id="loginGate" class="login-gate">
-                        <p><i class="fas fa-lock me-1"></i> You must be signed in to post a question.</p>
-                        <button class="btn-google" id="btnGoogleLogin2" style="margin: 0 auto;">
-                            <svg width="16" height="16" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-                            Sign in with Google
-                        </button>
-                    </div>
-
-                    <!-- FORM (shown when logged in) -->
-                    <form id="helpForm" style="display:none;">
-                        <div class="rate-notice" id="rateNotice">
-                            <i class="fas fa-clock me-1"></i> You've reached the limit of 3 questions/hour. Please wait before posting again.
-                        </div>
-
-                        <div class="mb-3">
-                            <select class="form-select" id="studentYear" required>
-                                <option value="" disabled selected>Select Year</option>
-                                <option>1st Year</option>
-                                <option>2nd Year</option>
-                                <option>3rd Year</option>
-                                <option>4th Year</option>
-                            </select>
-                        </div>
-
-                        <div class="mb-3">
-                            <select class="form-select" id="subjectTag" required>
-                                <option value="" disabled selected>Select Branch</option>
-                                <option value="General">General</option>
-                                <option value="CSE">Computer Science</option>
-                                <option value="ECE">Electronics</option>
-                                <option value="EE">Electrical</option>
-                                
-                            </select>
-                        </div>
-                       
-
-                        <div class="mb-3">
-                            <input type="text" class="form-control" id="questionTitle" maxlength="100" placeholder="Subject (e.g., Recursion help)" required>
-                            <div class="char-counter" id="titleCounter">0 / 100</div>
-                        </div>
-
-                        <div class="mb-3">
-                            <textarea class="form-control" id="questionText" rows="4" maxlength="600" placeholder="Describe your problem clearly..." required></textarea>
-                            <div class="char-counter" id="textCounter">0 / 600</div>
-                        </div>
-
-                        <button type="submit" class="btn btn-submit" id="submitBtn">
-                            <i class="fas fa-paper-plane me-2"></i>Post Question
-                        </button>
-                    </form>
                 </div>
             </div>
 
             <!-- RIGHT: FEED -->
             <div class="col-lg-8">
-                <div class="feed-header">
-                    <h3>Community Questions</h3>
-                    <span id="questionCount" style="color:var(--muted); font-size:0.88rem;"></span>
+                <div class="feed-top">
+                    <div>
+                        <div class="feed-eyebrow"><span class="live-dot-sm"></span> Live Feed</div>
+                        <h3>Community Questions</h3>
+                    </div>
+                    <span id="questionCount"></span>
                 </div>
+                <p class="feed-sub">Browse questions from students across all branches. Jump in and help someone out!</p>
 
                 <!-- Filters -->
                 <div class="filter-pills" id="filterPills">
-                    <span class="pill active" data-filter="All">All</span>
-                    <span class="pill" data-filter="General">General</span>
-                    <span class="pill" data-filter="CSE">CSE</span>
-                    <span class="pill" data-filter="ECE">ECE</span>
-                    <span class="pill" data-filter="EE">EE</span>
-                    
+                    <span class="pill active" data-filter="All">🗂 All</span>
+                    <span class="pill" data-filter="General">📌 General</span>
+                    <span class="pill" data-filter="CSE">💻 CSE</span>
+                    <span class="pill" data-filter="ECE">📡 ECE</span>
+                    <span class="pill" data-filter="EE">⚡ EE</span>
                 </div>
 
                 <div id="questionsContainer" class="questions-list">
@@ -538,7 +646,6 @@
             appId: "1:585607310164:web:437f924e06a336d41076c1"
         };
 
-        // ⚠️  Replace with your real admin email(s)
         const ADMIN_EMAILS = ["abdubey405@gmail.com"];
 
         const app = initializeApp(firebaseConfig);
@@ -547,16 +654,15 @@
         const provider = new GoogleAuthProvider();
 
         /* ── ABUSE FILTER ── */
-        // Extend this list as needed
         const BAD_WORDS = ["abuse1", "slur1", "spam", "idiot", "stupid", "fool", "hate", "kill", "die"];
         function containsBadWords(text) {
             const lower = text.toLowerCase();
             return BAD_WORDS.some(w => lower.includes(w));
         }
 
-        /* ── RATE LIMITING (client-side, per session) ── */
-        const RATE_LIMIT = 3;     // max posts
-        const RATE_WINDOW = 3600; // seconds (1 hour)
+        /* ── RATE LIMITING ── */
+        const RATE_LIMIT = 3;
+        const RATE_WINDOW = 3600;
         function getRateData() {
             const raw = sessionStorage.getItem('rateData');
             return raw ? JSON.parse(raw) : { count: 0, start: Date.now() };
@@ -604,7 +710,6 @@
                 document.getElementById('adminBadge').style.display = isAdmin ? 'inline' : 'none';
             }
 
-            // Re-render so delete buttons reflect the new auth state immediately
             renderQuestions();
         });
 
@@ -696,6 +801,8 @@
 
         onSnapshot(qQuery, (snapshot) => {
             allDocs = snapshot.docs.map(d => ({ id: d.id, ...d.data() }));
+            const heroQ = document.getElementById('heroTotalQ');
+            if (heroQ) heroQ.textContent = allDocs.length;
             renderQuestions();
         });
 
@@ -706,14 +813,18 @@
             document.getElementById('questionCount').textContent = `${filtered.length} question${filtered.length !== 1 ? 's' : ''}`;
 
             if (filtered.length === 0) {
-                container.innerHTML = `<div class="state-msg"><i class="fas fa-comment-slash"></i>No questions yet${activeFilter !== 'All' ? ' in this subject' : ''}. Be the first to ask!</div>`;
+                container.innerHTML = `
+                    <div class="state-msg">
+                        <i class="fas fa-comment-slash"></i>
+                        No questions yet${activeFilter !== 'All' ? ' in this subject' : ''}.
+                        <small>Be the first to ask — your classmates are here to help!</small>
+                    </div>`;
                 return;
             }
 
             container.innerHTML = '';
             filtered.forEach((data, i) => {
                 const dateStr = data.timestamp ? new Date(data.timestamp.seconds * 1000).toLocaleString() : 'Just now';
-
                 const canDelete = currentUser && (isAdmin || currentUser.uid === data.uid);
 
                 const card = document.createElement('div');
@@ -722,7 +833,7 @@
                 card.innerHTML = `
                     <div class="q-header">
                         <div class="q-author">
-                            ${data.avatar ? `<img src="${data.avatar}" style="width:28px;height:28px;border-radius:50%;object-fit:cover;" alt="">` : '<i class="fas fa-user-circle fa-lg"></i>'}
+                            ${data.avatar ? `<img src="${data.avatar}" style="width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid var(--blue-pale);" alt="">` : '<i class="fas fa-user-circle fa-lg"></i>'}
                             ${escHtml(data.name)}
                         </div>
                         <div class="badges-container">
@@ -745,7 +856,6 @@
                     </div>
                 `;
 
-                // Delete handler — re-check permission at click time, not just render time
                 card.querySelector('.btn-delete')?.addEventListener('click', async () => {
                     const allowed = currentUser && (ADMIN_EMAILS.includes(currentUser.email) || currentUser.uid === data.uid);
                     if (!allowed) { toast('⛔ You are not allowed to delete this question.', 'error'); return; }
@@ -758,7 +868,6 @@
                     }
                 });
 
-                // Flag handler (simple alert — hook to Firestore flag field for production)
                 card.querySelector('.btn-flag')?.addEventListener('click', () => {
                     toast('🚩 Question reported. Admins will review it.', '');
                 });
