@@ -500,6 +500,123 @@
             flex-shrink: 0;
         }
 
+        /* How It Works Section */
+        .how-section {
+            padding: 70px 0;
+            background: rgba(255,255,255,0.5);
+        }
+
+        .how-step {
+            background: #fff;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            height: 100%;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .how-step:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(37,99,235,0.12);
+            border-color: #3b82f6;
+        }
+
+        .step-number {
+            position: absolute;
+            top: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: #fff;
+            font-weight: 800;
+            font-size: 1rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(37,99,235,0.35);
+        }
+
+        .step-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 18px;
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: #2563eb;
+        }
+
+        .how-step h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #1e293b;
+        }
+
+        .how-step p {
+            color: #64748b;
+            font-size: 0.97rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* Why Academic Aid Section */
+        .why-section {
+            padding: 70px 0;
+        }
+
+        .feature-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 35px 25px;
+            text-align: center;
+            height: 100%;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+            transition: all 0.4s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            width: 65px;
+            height: 65px;
+            margin: 0 auto 18px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.7rem;
+            color: #fff;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .feature-card h5 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #1e293b;
+        }
+
+        .feature-card p {
+            color: #64748b;
+            font-size: 0.93rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+
         @media (max-width: 768px) {
             .hero-box h1 {
                 font-size: 2.5rem;
@@ -792,6 +909,90 @@
             </div>
         </div>
     </section>
+    <!-- How It Works Section -->
+    <section class="how-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>How It Works</h2>
+                <p>Get started in three simple steps</p>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-4">
+                    <div class="how-step">
+                        <div class="step-number">1</div>
+                        <div class="step-icon"><i class="fas fa-search"></i></div>
+                        <h4>Browse Resources</h4>
+                        <p>Search through hundreds of notes, past papers, and study guides shared by your peers.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="how-step">
+                        <div class="step-number">2</div>
+                        <div class="step-icon"><i class="fas fa-comments"></i></div>
+                        <h4>Ask the Community</h4>
+                        <p>Stuck on a concept? Post your question and get answers from fellow students who've been there.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="how-step">
+                        <div class="step-number">3</div>
+                        <div class="step-icon"><i class="fas fa-share-alt"></i></div>
+                        <h4>Share & Grow</h4>
+                        <p>Upload your own notes and materials to help others, and build a stronger community together.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Academic Aid Section -->
+    <section class="why-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Academic Aid?</h2>
+                <p>Everything you need to succeed, in one place</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card">
+                        <div class="feature-icon" style="background: linear-gradient(135deg, #3b82f6, #2563eb);">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h5>Peer-Powered</h5>
+                        <p>Real notes from real students who took the same exams as you.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card">
+                        <div class="feature-icon" style="background: linear-gradient(135deg, #7c3aed, #6d28d9);">
+                            <i class="fas fa-lock-open"></i>
+                        </div>
+                        <h5>Free Forever</h5>
+                        <p>All resources are completely free to access. No paywalls, no subscriptions.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card">
+                        <div class="feature-icon" style="background: linear-gradient(135deg, #0891b2, #0e7490);">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h5>Always Updated</h5>
+                        <p>Fresh materials uploaded regularly by an active and growing community.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card">
+                        <div class="feature-icon" style="background: linear-gradient(135deg, #16a34a, #15803d);">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h5>Works Everywhere</h5>
+                        <p>Fully responsive — study from your phone, tablet, or laptop anytime.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 <section class="stats-section">
         <div class="container">
             <div class="row g-4">
