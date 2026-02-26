@@ -40,6 +40,20 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
 
+        /* Fix invisible hamburger on white navbar */
+        .navbar-toggler {
+            border: 2px solid #2563eb !important;
+            padding: 6px 10px;
+            border-radius: 8px;
+        }
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%232563eb' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2.5' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+        }
+        .navbar-toggler:focus {
+            box-shadow: 0 0 0 3px rgba(37,99,235,0.2) !important;
+            outline: none;
+        }
+
         .navbar-brand {
             font-size: 1.8rem;
             font-weight: 700;
@@ -645,9 +659,180 @@
                 margin-top: 15px;
             }
         }
+
+        /* ═══════════════════════════════════════
+           INTRO OVERLAY
+        ═══════════════════════════════════════ */
+        #intro-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            background: linear-gradient(135deg, #f0f5ff 0%, #e0eaff 50%, #f8f0ff 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            animation: overlayExit 0.7s cubic-bezier(0.76, 0, 0.24, 1) 3s forwards;
+        }
+        @keyframes overlayExit {
+            0%   { clip-path: inset(0 0 0 0); opacity: 1; }
+            100% { clip-path: inset(0 0 100% 0); opacity: 0; pointer-events: none; visibility: hidden; }
+        }
+
+        .ov-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.35;
+            pointer-events: none;
+        }
+        .ov-blob-1 { width: 420px; height: 420px; background: #bfdbfe; top: -100px; left: -80px; animation: blobDrift1 6s ease-in-out infinite; }
+        .ov-blob-2 { width: 350px; height: 350px; background: #ddd6fe; bottom: -80px; right: -60px; animation: blobDrift2 7s ease-in-out infinite; }
+        .ov-blob-3 { width: 280px; height: 280px; background: #a5f3fc; top: 40%; left: 55%; animation: blobDrift1 5s ease-in-out infinite reverse; }
+        @keyframes blobDrift1 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(20px,-20px) scale(1.05)} }
+        @keyframes blobDrift2 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-15px,15px) scale(1.08)} }
+
+        .ov-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(37,99,235,0.07) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(37,99,235,0.07) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+        }
+
+        .ov-doodle {
+            position: absolute;
+            opacity: 0;
+            animation: ovDoodleIn 0.5s ease forwards;
+        }
+        .ov-doodle svg { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+        .ov-doodle:nth-child(4)  { top: 8%;    left: 6%;   width: 55px; animation-delay: 0.3s; }
+        .ov-doodle:nth-child(5)  { top: 10%;   right: 8%;  width: 50px; animation-delay: 0.5s; }
+        .ov-doodle:nth-child(6)  { bottom: 12%; left: 10%; width: 60px; animation-delay: 0.4s; }
+        .ov-doodle:nth-child(7)  { bottom: 8%;  right: 7%; width: 52px; animation-delay: 0.6s; }
+        .ov-doodle:nth-child(8)  { top: 50%;   left: 3%;   width: 45px; animation-delay: 0.35s; }
+        .ov-doodle:nth-child(9)  { top: 30%;   right: 4%;  width: 48px; animation-delay: 0.55s; }
+        @keyframes ovDoodleIn { to { opacity: 0.4; } }
+
+        .ov-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .ov-logo-ring {
+            width: 90px; height: 90px;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            border-radius: 24px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2.4rem;
+            box-shadow: 0 8px 32px rgba(37,99,235,0.35), 0 0 0 12px rgba(37,99,235,0.08);
+            animation: logoPop 0.6s cubic-bezier(0.34,1.56,0.64,1) 0.2s both;
+        }
+        @keyframes logoPop {
+            from { opacity:0; transform: scale(0.4) rotate(-15deg); }
+            to   { opacity:1; transform: scale(1) rotate(0deg); }
+        }
+
+        .ov-title {
+            font-family: 'Segoe UI', sans-serif;
+            font-size: clamp(2.2rem, 7vw, 4rem);
+            font-weight: 800;
+            color: #1e293b;
+            text-align: center;
+            line-height: 1.1;
+            animation: titleSlide 0.7s cubic-bezier(0.22,1,0.36,1) 0.4s both;
+        }
+        .ov-blue {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        @keyframes titleSlide {
+            from { opacity:0; transform: translateY(24px); }
+            to   { opacity:1; transform: translateY(0); }
+        }
+
+        .ov-tagline {
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 1rem;
+            color: #64748b;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            animation: titleSlide 0.7s ease 0.65s both;
+        }
+
+        .ov-progress-wrap {
+            width: min(340px, 75vw);
+            height: 5px;
+            background: rgba(37,99,235,0.12);
+            border-radius: 99px;
+            overflow: hidden;
+            animation: titleSlide 0.5s ease 0.8s both;
+        }
+        .ov-progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #3b82f6, #2563eb, #7c3aed);
+            border-radius: 99px;
+            animation: fillBar 2.5s cubic-bezier(0.4,0,0.2,1) 0.9s forwards;
+        }
+        @keyframes fillBar { to { width: 100%; } }
+
+        .ov-dots {
+            display: flex; gap: 8px;
+            animation: titleSlide 0.5s ease 1s both;
+        }
+        .ov-dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: #3b82f6;
+            animation: dotBounce 1.2s ease-in-out infinite;
+        }
+        .ov-dot:nth-child(2) { background: #2563eb; animation-delay: 0.15s; }
+        .ov-dot:nth-child(3) { background: #7c3aed; animation-delay: 0.3s; }
+        @keyframes dotBounce {
+            0%,100%{ transform: translateY(0); opacity:0.4; }
+            50%    { transform: translateY(-8px); opacity:1; }
+        }
     </style>
 </head>
 <body>
+
+<!-- ══════════════════════════════════════
+     INTRO OVERLAY
+══════════════════════════════════════ -->
+<div id="intro-overlay">
+    <div class="ov-blob ov-blob-1"></div>
+    <div class="ov-blob ov-blob-2"></div>
+    <div class="ov-blob ov-blob-3"></div>
+    <div class="ov-grid"></div>
+    <div class="ov-doodle"><svg width="55" height="55" viewBox="0 0 55 55" stroke="#3b82f6" stroke-width="2.5"><path d="M10 27 C10 16 20 8 27.5 8 C35 8 45 16 45 27 C45 38 35 47 27.5 47 C20 47 10 38 10 27Z"/><path d="M22 27 L26 31 L33 22"/></svg></div>
+    <div class="ov-doodle"><svg width="50" height="50" viewBox="0 0 50 50" stroke="#7c3aed" stroke-width="2.5"><rect x="8" y="8" width="34" height="34" rx="8"/><path d="M17 25 L23 31 L33 19"/></svg></div>
+    <div class="ov-doodle"><svg width="60" height="60" viewBox="0 0 60 60" stroke="#0891b2" stroke-width="2.5"><path d="M30 8 L38 22 H54 L42 32 L46 48 L30 38 L14 48 L18 32 L6 22 H22 Z"/></svg></div>
+    <div class="ov-doodle"><svg width="52" height="52" viewBox="0 0 52 52" stroke="#db2777" stroke-width="2.5"><path d="M26 8 C26 8 40 16 40 26 C40 36 26 44 26 44 C26 44 12 36 12 26 C12 16 26 8 26 8Z"/></svg></div>
+    <div class="ov-doodle"><svg width="45" height="45" viewBox="0 0 45 45" stroke="#16a34a" stroke-width="2.5"><path d="M22 6 L28 17 L40 17 L31 26 L34 38 L22 31 L10 38 L13 26 L4 17 L16 17 Z"/></svg></div>
+    <div class="ov-doodle"><svg width="48" height="48" viewBox="0 0 48 48" stroke="#ea580c" stroke-width="2.5"><path d="M8 12 C8 12 16 8 24 12 C32 16 40 12 40 12 L40 36 C40 36 32 40 24 36 C16 32 8 36 8 36 Z"/></svg></div>
+    <div class="ov-content">
+        <div class="ov-logo-ring">📚</div>
+        <div class="ov-title">Academic <span class="ov-blue">Aid FOT</span></div>
+        <div class="ov-tagline">Your Study Companion</div>
+        <div class="ov-progress-wrap"><div class="ov-progress-fill"></div></div>
+        <div class="ov-dots">
+            <div class="ov-dot"></div>
+            <div class="ov-dot"></div>
+            <div class="ov-dot"></div>
+        </div>
+    </div>
+</div>
+
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
             <a class="navbar-brand" href="#">

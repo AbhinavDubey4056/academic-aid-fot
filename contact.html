@@ -47,18 +47,6 @@
             transition: all 0.3s ease;
             position: relative;
         }
-        .navbar-toggler {
-    border: 2px solid #2563eb !important;
-    padding: 6px 10px;
-    border-radius: 8px;
-}
-.navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%232563eb' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2.5' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
-}
-.navbar-toggler:focus {
-    box-shadow: 0 0 0 3px rgba(37,99,235,0.2) !important;
-    outline: none;
-}
         .navbar-nav .nav-link:hover { color: #2563eb !important; transform: translateY(-2px); }
         .navbar-nav .nav-link::after {
             content: '';
@@ -162,7 +150,6 @@
             font-weight: 800;
             color: #2563eb;
             display: block;
-
         }
         .stat-item .lbl {
             font-size: 0.85rem;
@@ -384,12 +371,11 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-                <div class="logo-icon">
-                    <i class="fas fa-graduation-cap"></i>
-                </div>
+                <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
                 Academic Aid
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -397,19 +383,9 @@
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
-                    
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.html">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contactus.html">Contact Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="privacy.html">Privacy Policy</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="terms.html">Terms & Conditions</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="ask.html">Ask Help</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">Contact Us</a></li>
                 </ul>
             </div>
         </div>
@@ -421,7 +397,7 @@
             <div class="hero-badge"><i class="fas fa-headset"></i> We're Here to Help</div>
             <h1>Get in Touch with<br><span>Academic Aid</span></h1>
             <p class="lead">Have a question, suggestion, or just want to say hi? Our team is always ready to listen and help you out.</p>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeTs-osvIrq5tJer1jAITJX4rfzrZdkVNvKwIkZl-C5OPDHOw/viewform?usp=publish-editor" target="_blank" class="btn-contact-hero">
+            <a href="https://YOUR_CONTACT_LINK_HERE" target="_blank" class="btn-contact-hero">
                 Contact Us Now <i class="fas fa-arrow-right"></i>
             </a>
         </div>
@@ -433,7 +409,7 @@
             <div class="row g-3 text-center">
                 <div class="col-6 col-md-3">
                     <div class="stat-item">
-                        <span class="num">450+</span>
+                        <span class="num">100+</span>
                         <span class="lbl">Students Helped</span>
                     </div>
                 </div>
@@ -472,7 +448,7 @@
                         <div class="icon-wrap icon-blue"><i class="fab fa-telegram"></i></div>
                         <h5>Telegram</h5>
                         <p>Fastest way to get answers. Join our group and ask anything anytime.</p>
-                        <a href="https://t.me/academicaidcommunity" target="_blank" class="card-link">Join Group <i class="fas fa-arrow-right"></i></a>
+                        <a href="https://YOUR_CONTACT_LINK_HERE" target="_blank" class="card-link">Join Group <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-3 reveal">
@@ -480,7 +456,7 @@
                         <div class="icon-wrap icon-green"><i class="fas fa-envelope"></i></div>
                         <h5>Email</h5>
                         <p>For formal queries, collaborations, or content contributions. We reply within 24 hours.</p>
-                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSd1Fp6oemfDU8yIb5Hn861Yg2Lig9WXv0KG3of9fyrLHb3Mhw/viewform" class="card-link">Send Email <i class="fas fa-arrow-right"></i></a>
+                        <a href="mailto:support@academicaid.com" class="card-link">Send Email <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-3 reveal">
@@ -488,7 +464,7 @@
                         <div class="icon-wrap icon-pink"><i class="fab fa-instagram"></i></div>
                         <h5>Instagram</h5>
                         <p>Follow us for updates, tips, and important announcements about new resources.</p>
-                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSd1Fp6oemfDU8yIb5Hn861Yg2Lig9WXv0KG3of9fyrLHb3Mhw/viewform" target="_blank" class="card-link">Follow Us <i class="fas fa-arrow-right"></i></a>
+                        <a href="https://YOUR_CONTACT_LINK_HERE" target="_blank" class="card-link">Follow Us <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-3 reveal">
@@ -576,7 +552,7 @@
                 </div>
                 <h2>Still Have Questions?</h2>
                 <p>Don't be shy — drop us a message and we'll get back to you as soon as possible.</p>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeTs-osvIrq5tJer1jAITJX4rfzrZdkVNvKwIkZl-C5OPDHOw/viewform?usp=publish-editor" target="_blank" class="btn-cta-big">
+                <a href="https://YOUR_CONTACT_LINK_HERE" target="_blank" class="btn-cta-big">
                     <i class="fas fa-paper-plane"></i> Contact Us Now
                 </a>
             </div>
